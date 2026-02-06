@@ -9,85 +9,104 @@
 <style>
 
 body{
-font-family: Arial, sans-serif;
-background:#f5f6f8;
+font-family:"Segoe UI", Arial, sans-serif;
+background:#eef1f5;
 margin:0;
-padding:20px;
+padding:25px;
+color:#222;
 }
 
 .container{
-max-width:800px;
+max-width:850px;
 margin:auto;
-background:white;
-padding:25px;
-border-radius:12px;
-box-shadow:0 2px 8px rgba(0,0,0,0.08);
+background:#fff;
+padding:35px;
+border-radius:8px;
+box-shadow:0 3px 12px rgba(0,0,0,0.08);
 }
 
-.logo{
+.header{
 text-align:center;
+margin-bottom:15px;
 }
 
-.logo img{
-width:120px;
+.header img{
+width:95px;
+margin-bottom:10px;
 }
 
-h1{
-text-align:center;
-font-size:22px;
-margin-top:10px;
+.title{
+font-size:24px;
+font-weight:600;
+margin-bottom:5px;
 }
 
 .status{
-text-align:center;
-color:green;
-font-weight:bold;
-margin-bottom:20px;
+color:#198754;
+font-weight:600;
+margin-bottom:25px;
 }
 
-.data{
+.section{
+margin-top:20px;
+}
+
+.section h2{
+text-align:center;
+font-size:20px;
+border-bottom:1px solid #dcdcdc;
+padding-bottom:6px;
+margin-bottom:15px;
+}
+
+table{
 width:100%;
 border-collapse:collapse;
-font-size:18px;
+font-size:17px;
 }
 
-.data td{
-padding:8px;
+td{
+padding:8px 4px;
 vertical-align:top;
 }
 
 .label{
-width:220px;
-font-weight:bold;
+width:240px;
+font-weight:600;
 }
 
 .nomor{
-color:#0b5ed7;
-font-weight:bold;
+font-weight:600;
+color:#000;
 }
 
-.section-title{
-font-weight:bold;
-margin-top:25px;
-border-bottom:2px solid #ddd;
-padding-bottom:5px;
-font-size:20px;
+.pejabat{
+margin-top:15px;
+line-height:1.6;
 }
 
 .footer{
-margin-top:30px;
-background:#0b5ed7;
-color:white;
-padding:15px;
-border-radius:8px;
+margin-top:35px;
 display:flex;
 align-items:center;
-gap:15px;
+gap:12px;
 font-size:14px;
+color:#0b5ed7;
+border-top:1px solid #e1e1e1;
+padding-top:12px;
 }
 
 .footer img{
-width:60px;
+width:50px;
+}
+
+@media(max-width:600px){
+.container{
+padding:20px;
+}
+.label{
+width:180px;
+}
 }
 
 </style>
@@ -97,68 +116,61 @@ width:60px;
 
 <div class="container">
 
-<div class="logo">
-<img src="universitas-terbuka.png">
+<div class="header">
+<img src="universitas-terbuka (1).png">
+<div class="title">Verifikasi Ijazah Elektronik</div>
+<div class="status">✔ DATA TERVERIFIKASI</div>
 </div>
 
-<h1>Verifikasi Ijazah Elektronik</h1>
-
-<div class="status">✔ DATA TERVERIFIKASI</div>
-
-<table class="data">
+<table>
 <tr><td class="label">Institusi</td><td>: Universitas Terbuka</td></tr>
 <tr><td class="label">Status Dokumen</td><td>: Sah dan Terdaftar</td></tr>
 <tr><td class="label">Sistem</td><td>: Verifikasi Ijazah Elektronik</td></tr>
 </table>
 
-<div class="section-title">                VERIFIKASI IJAZAH ELEKTRONIK</div>
+<div class="section">
+<h2>VERIFIKASI IJAZAH ELEKTRONIK</h2>
 
-<table class="data">
-
+<table>
 <tr><td class="label">Nama</td><td>: Muhammad Agil</td></tr>
-
-<tr><td class="label">NIK</td>
-<td class="nomor">: 352209056020002</td></tr>
-
-<tr><td class="label">NIM</td>
-<td class="nomor">: 2495101257</td></tr>
-
-<tr><td class="label">Nomor Ijazah</td>
-<td class="nomor">: 6118702102837011</td></tr>
-
-<tr><td class="label">Jenjang</td>
-<td>: Magister (S2)</td></tr>
-
-<tr><td class="label">Program Studi</td>
-<td>: Magister Studi Lingkungan</td></tr>
-
-<tr><td class="label">Tanggal Lulus</td>
-<td>: 21 Agustus 2025</td></tr>
-
-<tr><td class="label">Akreditasi</td>
-<td>: SK BAN-PT 811/SK/BAN-PT/Ak/M/III/2023</td></tr>
-
+<tr><td class="label">NIK</td><td class="nomor">: 352209056020002</td></tr>
+<tr><td class="label">NIM</td><td class="nomor">: 2495101257</td></tr>
+<tr><td class="label">Nomor Ijazah</td><td class="nomor">: 6118702102837011</td></tr>
+<tr><td class="label">Jenjang</td><td>: Magister (S2)</td></tr>
+<tr><td class="label">Program Studi</td><td>: Magister Studi Lingkungan</td></tr>
+<tr><td class="label">Tanggal Lulus</td><td>: 21 Agustus 2025</td></tr>
+<tr><td class="label">Akreditasi</td><td>: SK BAN-PT 811/SK/BAN-PT/Ak/M/III/2023</td></tr>
 </table>
 
-<div class="section-title">PEJABAT PENANDATANGAN</div>
+</div>
 
-<p><b>Rektor</b><br>
+<div class="section">
+<h2>PEJABAT PENANDATANGAN</h2>
+
+<div class="pejabat">
+<b>Rektor</b><br>
 Prof. Dr. Ali Muktiyanto, S.E., M.Si.<br>
-NIP. 197208242000121001</p>
+NIP. 197208242000121001
+</div>
 
-<p><b>Dekan</b><br>
+<div class="pejabat">
+<b>Dekan</b><br>
 Prof. Dr. Maman Rumanta, M.Si.<br>
-NIP. 196305091989031002</p>
+NIP. 196305091989031002
+</div>
 
-<p><b>Tertanggal</b><br>
-01 Februari 2026</p>
+<div class="pejabat">
+<b>Tertanggal</b><br>
+01 Februari 2026
+</div>
+
+</div>
 
 <div class="footer">
-<img src="<img src="bsre-logo-baru-1024x340.png">
+<img src="bsre-logo-baru-1024x340.png">
 <div>
-Dokumen ini ditandatangani secara elektronik menggunakan
-sertifikat elektronik yang diterbitkan oleh Balai Sertifikasi
-Elektronik (BSrE) Badan Siber dan Sandi Negara.
+Dokumen ini ditandatangani secara elektronik menggunakan sertifikat elektronik
+yang diterbitkan oleh Balai Sertifikasi Elektronik (BSrE) Badan Siber dan Sandi Negara.
 </div>
 </div>
 
