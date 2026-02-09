@@ -16,17 +16,25 @@ margin:0;
 .header{
 background:linear-gradient(90deg,#0b3c74,#f2c200);
 color:white;
-padding:15px 20px;
+padding:15px 25px;
 display:flex;
 align-items:center;
 gap:15px;
-font-size:18px;
+}
+
+.header img{
+height:60px;
+}
+
+.header-text{
+font-size:20px;
 font-weight:bold;
+line-height:1.4;
 }
 
 /* CONTAINER */
 .container{
-max-width:850px;
+max-width:900px;
 margin:30px auto;
 background:white;
 border-radius:12px;
@@ -38,17 +46,24 @@ overflow:hidden;
 .title{
 text-align:center;
 font-size:28px;
-padding:20px;
+padding:25px;
 font-weight:bold;
 }
 
-/* STATUS */
+/* STATUS BOX */
 .status{
 background:#e8f0fb;
-color:#0b3c74;
-padding:15px 20px;
+padding:20px;
 border-left:6px solid #f2c200;
-line-height:1.8;
+}
+
+.status-item{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:10px;
+font-size:16px;
+color:#0b3c74;
 }
 
 /* TABLE */
@@ -64,22 +79,24 @@ border-bottom:1px solid #eee;
 
 .label{
 width:250px;
-color:#555;
+color:#666;
 }
 
 .value{
 color:#333;
-font-weight:normal;
 }
 
-/* BSRE */
+/* BSRE AREA */
 .bsre{
-text-align:center;
-padding:25px;
+display:flex;
+align-items:center;
+gap:15px;
+padding:20px;
+border-top:1px solid #eee;
 }
 
 .bsre img{
-height:70px;
+height:60px;
 }
 
 /* FOOTER */
@@ -87,7 +104,7 @@ height:70px;
 background:#0b3c74;
 color:white;
 text-align:center;
-padding:20px;
+padding:15px;
 font-size:14px;
 }
 </style>
@@ -97,22 +114,31 @@ font-size:14px;
 
 <!-- HEADER -->
 <div class="header">
-<img src="logo-uii.png" style="height:55px;">
-<div>
+<img src="logo-uii.png">
+<div class="header-text">
 Sistem Verifikasi Ijazah Elektronik<br>
 Universitas Islam Indonesia
 </div>
 </div>
 
-<!-- CONTAINER -->
 <div class="container">
 
 <div class="title">VERIFIKASI IJAZAH ELEKTRONIK</div>
 
 <div class="status">
-Status Dokumen : Terverifikasi<br>
-Institusi : Universitas Islam Indonesia<br>
-Sistem : Verifikasi Ijazah Elektronik
+
+<div class="status-item">
+✔ Status Dokumen : Terverifikasi
+</div>
+
+<div class="status-item">
+🏫 Institusi : Universitas Islam Indonesia
+</div>
+
+<div class="status-item">
+💻 Sistem : Verifikasi Ijazah Elektronik
+</div>
+
 </div>
 
 <div class="table">
@@ -149,17 +175,18 @@ Sistem : Verifikasi Ijazah Elektronik
 
 </div>
 
-<!-- LOGO BSRE -->
+<!-- BSRE -->
 <div class="bsre">
 <img src="bsre-logo-baru-1024x340.png">
+<div>
+Dokumen ini ditandatangani secara elektronik menggunakan sertifikat elektronik BSrE — Badan Siber dan Sandi Negara.
+</div>
 </div>
 
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
-Dokumen ditandatangani secara elektronik menggunakan sertifikat BSrE — Badan Siber dan Sandi Negara
-<br>© Universitas Islam Indonesia
+© Universitas Islam Indonesia
 </div>
 
 </body>
