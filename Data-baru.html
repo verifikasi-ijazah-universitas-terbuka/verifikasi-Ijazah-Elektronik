@@ -3,62 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sistem Verifikasi Ijazah Elektronik - UII</title>
+<title>Verifikasi Ijazah Elektronik</title>
 
 <style>
 body{
-font-family:Arial, sans-serif;
-background:#f2f4f7;
-margin:0;
+    font-family: Arial, sans-serif;
+    background:#f3f6fa;
+    margin:0;
 }
 
 .header{
-background:linear-gradient(90deg,#0b3c74,#1f5ea8);
-color:white;
-padding:25px;
-text-align:center;
+    background:linear-gradient(90deg,#0b3c74,#1d5fa8);
+    color:white;
+    padding:20px;
+}
+
+.header h1{
+    margin:0;
+    font-size:22px;
 }
 
 .container{
-max-width:850px;
-margin:30px auto;
-background:white;
-padding:25px;
-border-radius:10px;
-box-shadow:0 3px 10px rgba(0,0,0,0.1);
+    max-width:850px;
+    margin:30px auto;
+    background:white;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    overflow:hidden;
+}
+
+.title{
+    text-align:center;
+    font-size:30px;
+    font-weight:bold;
+    padding:20px;
 }
 
 .status{
-background:#e6f4ea;
-padding:15px;
-border-radius:8px;
-font-size:20px;
-font-weight:bold;
-color:#1e7e34;
-margin-bottom:20px;
+    background:#e6f4ea;
+    color:#1e7e34;
+    padding:15px;
+    font-weight:bold;
+    border-bottom:1px solid #ddd;
 }
 
-table{
-width:100%;
-border-collapse:collapse;
+.table{
+    padding:20px;
 }
 
-td{
-padding:12px;
-border-bottom:1px solid #ddd;
+.row{
+    display:flex;
+    border-bottom:1px solid #eee;
+    padding:10px 0;
 }
 
 .label{
-font-weight:bold;
-width:40%;
+    width:250px;
+    color:#555;
+}
+
+.value{
+    font-weight:bold;
 }
 
 .footer{
-background:#0b3c74;
-color:white;
-text-align:center;
-padding:20px;
-margin-top:40px;
+    background:#0b3c74;
+    color:white;
+    text-align:center;
+    padding:20px;
+    font-size:14px;
 }
 </style>
 </head>
@@ -66,58 +79,70 @@ margin-top:40px;
 <body>
 
 <div class="header">
-<h2>Sistem Verifikasi Ijazah Elektronik</h2>
-<h3>Universitas Islam Indonesia</h3>
+<h1>Sistem Verifikasi Ijazah Elektronik<br>Universitas Islam Indonesia</h1>
 </div>
 
 <div class="container">
 
+<div class="title">VERIFIKASI IJAZAH ELEKTRONIK</div>
+
 <div class="status">
-✔ Status Ijazah : VALID
+Status Ijazah: VERIFIKASI IJAZAH ELEKTRONIK
 </div>
 
-<table>
-<tr>
-<td class="label">Nama Lengkap</td>
-<td>Agil Dwi Wijayanto</td>
-</tr>
+<div class="table">
 
-<tr>
-<td class="label">Nomor Ijazah</td>
-<td>UII-2025-123456</td>
-</tr>
+<div class="row">
+<div class="label">Nama Lengkap</div>
+<div class="value">: Muhammad Agil</div>
+</div>
 
-<tr>
-<td class="label">NIM</td>
-<td>123456789</td>
-</tr>
+  <div class="row">
+<div class="label">NIK</div>
+<div class="value">: 35227538736528376</div>
+</div>
 
-<tr>
-<td class="label">Program Studi</td>
-<td>Magister Manajemen</td>
-</tr>
+<div class="row">
+<div class="label">Nomor Ijazah</div>
+<div class="value">: UII-2025-123456</div>
+</div>
 
-<tr>
-<td class="label">Fakultas</td>
-<td>Fakultas Bisnis dan Ekonomika</td>
-</tr>
+<div class="row">
+<div class="label">NIM</div>
+<div class="value">: 123456789</div>
+</div>
 
-<tr>
-<td class="label">Tanggal Lulus</td>
-<td>01 Februari 2026</td>
-</tr>
+<div class="row">
+<div class="label">Program Studi</div>
+<div class="value">: Magister Manajemen</div>
+</div>
 
-<tr>
-<td class="label">Pejabat Penandatangan</td>
-<td>Rektor & Dekan Fakultas</td>
-</tr>
-</table>
+<div class="row">
+<div class="label">Fakultas</div>
+<div class="value">: Fakultas Bisnis dan Ekonomika</div>
+</div>
 
+  <div class="row">
+<div class="label">Tanggal Masuk</div>
+<div class="value">: 3 Desember 2023</div>
+</div>
+
+<div class="row">
+<div class="label">Tanggal Lulus</div>
+<div class="value">01 Februari 2026</div>
+</div>
+
+<div class="row">
+<div class="label">Pejabat Penandatangan</div>
+<div class="value">Rektor & Dekan Fakultas</div>
+</div>
+
+</div>
 </div>
 
 <div class="footer">
-Dokumen ini ditandatangani secara elektronik menggunakan sertifikat elektronik BSrE – Badan Siber dan Sandi Negara.<br>
-© Universitas Islam Indonesia
+Dokumen ini ditandatangani secara elektronik menggunakan sertifikat elektronik BSrE — Badan Siber dan Sandi Negara.
+<br>© Universitas Islam Indonesia
 </div>
 
 </body>
