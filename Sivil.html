@@ -4,69 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sistem Verifikasi Ijazah Elektronik</title>
-
 <script src="https://cdn.tailwindcss.com"></script>
-
-<style>
-body{
-font-family: Arial, Helvetica, sans-serif;
-}
-</style>
-
 </head>
 
 <body class="bg-white">
 
-<!-- HEADER SISTEM -->
-<div class="border-b">
+<!-- HALAMAN INPUT -->
+<div id="halamanInput" class="max-w-xl mx-auto py-16 px-6 text-center">
 
-<div class="max-w-4xl mx-auto px-5 py-4 flex items-center gap-4">
-
-<img src="logo.png" class="h-14">
-
-<div>
-<h1 class="font-bold text-lg text-gray-800">
-Sistem Verifikasi Ijazah Elektronik
+<h1 class="text-2xl font-bold mb-4">
+Sistem Verifikasi Ijazah Elektronik Nasional
 </h1>
-<p class="text-sm text-gray-500">
-Portal Validasi Dokumen Akademik Digital
+
+<p class="text-gray-600 mb-6">
+Masukkan Nomor Ijazah untuk melakukan verifikasi dokumen akademik
 </p>
-</div>
 
-</div>
+<form id="formVerifikasi" class="space-y-4">
 
-</div>
-
-<!-- CONTAINER -->
-<div class="max-w-3xl mx-auto px-5 py-10">
-
-<!-- BANNER VALIDASI -->
-<div class="bg-blue-50 border border-blue-200 text-blue-800 text-sm p-3 rounded-lg mb-6 text-center">
-Dokumen diverifikasi melalui sistem elektronik berbasis Sertifikat Digital
-</div>
-
-<!-- FORM -->
-<div class="border rounded-xl p-6">
-
-<form id="verifyForm" class="space-y-4">
-
-<div>
-<label class="text-sm font-semibold text-gray-700">
-Nomor Ijazah / Sertifikat
-</label>
-
-<input 
-type="text"
-id="docNumber"
+<input type="text" id="nomor"
 required
-placeholder="Contoh: 2025-UII-00123"
-class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
->
-</div>
+placeholder="Contoh: UMS-2025-00001"
+class="w-full border px-4 py-2 rounded-lg">
 
-<button 
-type="submit"
-class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
+<button class="w-full bg-blue-700 text-white py-2 rounded-lg">
 Verifikasi Dokumen
 </button>
 
@@ -74,21 +35,42 @@ Verifikasi Dokumen
 
 </div>
 
-<!-- HASIL -->
-<div id="result" class="mt-6 hidden border rounded-xl p-6">
+<!-- HALAMAN IDENTITAS -->
+<div id="halamanIdentitas" class="max-w-4xl mx-auto p-6 hidden">
 
-<h2 class="font-bold text-gray-800 mb-3">
-Hasil Verifikasi
-</h2>
+<div class="flex items-center gap-4 border-b pb-4 mb-6">
 
-<div id="resultContent" class="text-sm text-gray-700 space-y-2"></div>
+<img src="logo-verifikasi.png" class="h-16">
+
+<div>
+<h1 class="font-bold text-lg">
+Sistem Verifikasi Ijazah Elektronik
+</h1>
+<p class="text-sm text-gray-500">
+Validasi Dokumen Akademik Nasional
+</p>
+</div>
 
 </div>
 
-<!-- FOOTER -->
-<div class="mt-10 text-xs text-gray-500 text-center">
-© 2026 Sistem Verifikasi Dokumen Elektronik
+<div class="border rounded-lg p-4 bg-green-50 border-green-300 mb-6 flex gap-3 items-center">
+
+<div class="w-10 h-10 bg-green-600 text-white flex items-center justify-center rounded-full font-bold">
+✔
 </div>
+
+<div>
+<p class="font-bold text-green-700">
+Status Dokumen: VALID
+</p>
+<p class="text-sm text-green-600">
+Dokumen telah diverifikasi melalui sistem elektronik nasional
+</p>
+</div>
+
+</div>
+
+<div id="dataBox" class="border rounded-lg p-6 text-sm space-y-2"></div>
 
 </div>
 
@@ -96,58 +78,51 @@ Hasil Verifikasi
 
 const database={
 
-"2025-UII-00123":{
-nama:"Muhammad Agil Assegaf",
-institusi:"Universitas Islam Indonesia",
-program:"Magister Sains",
+"UMS-2025-00001":{
+nama:"Muhammad Agil",
+nik:"35227538736*****02",
+nim:"23313164",
+ijazah:"UMS-2025-00001",
+kampus:"Universitas Muhammadiyah Surakarta",
+prodi:"Magister Manajemen",
 tahun:"2025",
-status:"VALID"
-},
-
-"2024-UT-00456":{
-nama:"Ahmad Pratama",
-institusi:"Universitas Terbuka",
-program:"Magister Ilmu Lingkungan",
-tahun:"2024",
-status:"VALID"
+akreditasi:"Unggul",
+rektor:"Dr. Sofyan Anif"
 }
 
 };
 
-const form=document.getElementById("verifyForm");
-const result=document.getElementById("result");
-const resultContent=document.getElementById("resultContent");
-
-form.addEventListener("submit",function(e){
+document.getElementById("formVerifikasi")
+.addEventListener("submit",function(e){
 
 e.preventDefault();
 
-const docNumber=document.getElementById("docNumber").value.trim();
+let nomor=document.getElementById("nomor").value.trim();
 
-if(database[docNumber]){
+if(database[nomor]){
 
-const data=database[docNumber];
+let d=database[nomor];
 
-resultContent.innerHTML=`
-<p><strong>Nama:</strong> ${data.nama}</p>
-<p><strong>Institusi:</strong> ${data.institusi}</p>
-<p><strong>Program Studi:</strong> ${data.program}</p>
-<p><strong>Tahun Lulus:</strong> ${data.tahun}</p>
-<p class="text-green-600 font-bold">✔ Status Dokumen : ${data.status}</p>
+document.getElementById("halamanInput").classList.add("hidden");
+document.getElementById("halamanIdentitas").classList.remove("hidden");
+
+document.getElementById("dataBox").innerHTML=`
+<p><strong>Nama Lengkap:</strong> ${d.nama}</p>
+<p><strong>NIK:</strong> ${d.nik}</p>
+<p><strong>NIM:</strong> ${d.nim}</p>
+<p><strong>Nomor Ijazah:</strong> ${d.ijazah}</p>
+<p><strong>Institusi:</strong> ${d.kampus}</p>
+<p><strong>Program Studi:</strong> ${d.prodi}</p>
+<p><strong>Tahun Lulus:</strong> ${d.tahun}</p>
+<p><strong>Akreditasi:</strong> ${d.akreditasi}</p>
+<p><strong>Rektor:</strong> ${d.rektor}</p>
 `;
 
 }else{
 
-resultContent.innerHTML=`
-<p class="text-red-600 font-bold">
-❌ Dokumen tidak ditemukan atau tidak valid
-</p>
-<p>Silakan periksa kembali nomor dokumen Anda</p>
-`;
+alert("Dokumen tidak ditemukan");
 
 }
-
-result.classList.remove("hidden");
 
 });
 
