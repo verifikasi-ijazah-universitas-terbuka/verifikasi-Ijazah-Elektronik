@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistem Verifikasi Ijazah Elektronik</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{
+font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+
+</head>
+
+<body class="bg-white">
+
+<!-- HEADER SISTEM -->
+<div class="border-b">
+
+<div class="max-w-4xl mx-auto px-5 py-4 flex items-center gap-4">
+
+<img src="logo.png" class="h-14">
+
+<div>
+<h1 class="font-bold text-lg text-gray-800">
+Sistem Verifikasi Ijazah Elektronik
+</h1>
+<p class="text-sm text-gray-500">
+Portal Validasi Dokumen Akademik Digital
+</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- CONTAINER -->
+<div class="max-w-3xl mx-auto px-5 py-10">
+
+<!-- BANNER VALIDASI -->
+<div class="bg-blue-50 border border-blue-200 text-blue-800 text-sm p-3 rounded-lg mb-6 text-center">
+Dokumen diverifikasi melalui sistem elektronik berbasis Sertifikat Digital
+</div>
+
+<!-- FORM -->
+<div class="border rounded-xl p-6">
+
+<form id="verifyForm" class="space-y-4">
+
+<div>
+<label class="text-sm font-semibold text-gray-700">
+Nomor Ijazah / Sertifikat
+</label>
+
+<input 
+type="text"
+id="docNumber"
+required
+placeholder="Contoh: 2025-UII-00123"
+class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+>
+</div>
+
+<button 
+type="submit"
+class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
+Verifikasi Dokumen
+</button>
+
+</form>
+
+</div>
+
+<!-- HASIL -->
+<div id="result" class="mt-6 hidden border rounded-xl p-6">
+
+<h2 class="font-bold text-gray-800 mb-3">
+Hasil Verifikasi
+</h2>
+
+<div id="resultContent" class="text-sm text-gray-700 space-y-2"></div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="mt-10 text-xs text-gray-500 text-center">
+© 2026 Sistem Verifikasi Dokumen Elektronik
+</div>
+
+</div>
+
+<script>
+
+const database={
+
+"2025-UII-00123":{
+nama:"Muhammad Agil Assegaf",
+institusi:"Universitas Islam Indonesia",
+program:"Magister Sains",
+tahun:"2025",
+status:"VALID"
+},
+
+"2024-UT-00456":{
+nama:"Ahmad Pratama",
+institusi:"Universitas Terbuka",
+program:"Magister Ilmu Lingkungan",
+tahun:"2024",
+status:"VALID"
+}
+
+};
+
+const form=document.getElementById("verifyForm");
+const result=document.getElementById("result");
+const resultContent=document.getElementById("resultContent");
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const docNumber=document.getElementById("docNumber").value.trim();
+
+if(database[docNumber]){
+
+const data=database[docNumber];
+
+resultContent.innerHTML=`
+<p><strong>Nama:</strong> ${data.nama}</p>
+<p><strong>Institusi:</strong> ${data.institusi}</p>
+<p><strong>Program Studi:</strong> ${data.program}</p>
+<p><strong>Tahun Lulus:</strong> ${data.tahun}</p>
+<p class="text-green-600 font-bold">✔ Status Dokumen : ${data.status}</p>
+`;
+
+}else{
+
+resultContent.innerHTML=`
+<p class="text-red-600 font-bold">
+❌ Dokumen tidak ditemukan atau tidak valid
+</p>
+<p>Silakan periksa kembali nomor dokumen Anda</p>
+`;
+
+}
+
+result.classList.remove("hidden");
+
+});
+
+</script>
+
+</body>
+</html>
