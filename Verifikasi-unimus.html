@@ -6,10 +6,17 @@
 <title>Portal Verifikasi Data Akademik</title>
 
 <style>
+:root{
+    --biru:#0c2d6b;
+    --biru2:#1b4fa3;
+    --emas:#d4a017;
+    --hijau:#1f8a3b;
+}
+
 body{
-    font-family: Arial, sans-serif;
+    font-family:"Segoe UI",Arial,sans-serif;
     margin:0;
-    background: linear-gradient(to right,#0c2d6b,#1b4fa3);
+    background:linear-gradient(135deg,var(--biru),var(--biru2));
 }
 
 /* HALAMAN AWAL */
@@ -21,88 +28,149 @@ body{
 }
 
 .card{
-    background:white;
-    padding:40px;
+    background:#fff;
+    padding:42px 36px;
     width:420px;
-    border-radius:12px;
+    border-radius:16px;
     text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    box-shadow:0 12px 35px rgba(0,0,0,0.25);
+    animation:fadeUp .6s ease;
 }
 
 .logo{
-    width:140px;
+    width:120px;
+    margin-bottom:18px;
+}
+
+.subtitle{
+    color:#555;
     margin-bottom:20px;
 }
 
 input{
     width:100%;
-    padding:12px;
-    margin-top:15px;
+    padding:13px;
     border-radius:8px;
-    border:1px solid #ccc;
+    border:1px solid #d0d6e0;
+    font-size:15px;
 }
 
 button{
     width:100%;
-    margin-top:20px;
-    padding:12px;
+    margin-top:18px;
+    padding:13px;
     border:none;
     border-radius:8px;
-    background:linear-gradient(to right,#f4c430,#d4a017);
-    font-weight:bold;
+    background:linear-gradient(to right,#f4c430,var(--emas));
+    font-weight:600;
+    font-size:15px;
     cursor:pointer;
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-1px);
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
 }
 
 /* HALAMAN HASIL */
 #halamanHasil{
     display:none;
-    padding:40px;
-    background:#f4f6fb;
     min-height:100vh;
+    background:#f3f6fb;
+    padding:40px 20px;
+    animation:fadeIn .5s ease;
 }
 
 .header-hasil{
     text-align:center;
-    margin-bottom:30px;
+    margin-bottom:25px;
 }
 
 .header-hasil img{
-    width:150px;
+    width:90px;
+    margin-bottom:8px;
 }
 
+.header-hasil h2{
+    margin:0;
+    font-weight:600;
+}
+
+/* KARTU HASIL */
 .kartu-hasil{
-    background:white;
-    max-width:650px;
+    background:#fff;
+    max-width:520px;
     margin:0 auto;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    padding:30px 28px;
+    border-radius:14px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
 }
 
-.status-badge{
-    padding:6px 12px;
+.status-title{
+    text-align:center;
+    font-size:20px;
+    font-weight:700;
+    color:var(--hijau);
+}
+
+.badge{
+    display:inline-block;
+    padding:6px 14px;
     border-radius:20px;
     font-size:13px;
-    font-weight:bold;
+    font-weight:600;
+    margin-top:6px;
 }
 
 .aktif{
-    background:#d4edda;
-    color:#155724;
+    background:#e6f4ea;
+    color:var(--hijau);
 }
 
 .tidak{
-    background:#f8d7da;
-    color:#721c24;
+    background:#fdecea;
+    color:#b42318;
 }
 
-.data-item{
-    margin-bottom:10px;
+.data-grid{
+    margin-top:18px;
+}
+
+.row{
+    display:flex;
+    margin:8px 0;
+    font-size:15px;
+}
+
+.label{
+    width:160px;
+    color:#444;
+    font-weight:600;
+}
+
+.value{
+    flex:1;
+    color:#111;
 }
 
 .btn-kembali{
-    margin-top:25px;
-    text-align:center;
+    margin:30px auto 0;
+    max-width:520px;
+}
+
+.btn-kembali button{
+    background:linear-gradient(to right,#e0b93f,var(--emas));
+}
+
+/* ANIMASI */
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(30px)}
+    to{opacity:1;transform:translateY(0)}
+}
+@keyframes fadeIn{
+    from{opacity:0}
+    to{opacity:1}
 }
 </style>
 </head>
@@ -114,9 +182,9 @@ button{
   <div class="card">
       <img src="logo-unimus.png" class="logo">
       <h2>Portal Verifikasi Data Akademik</h2>
-      <p>Masukkan Nama (tanpa gelar)</p>
+      <div class="subtitle">Masukkan Nama Dosen (tanpa gelar)</div>
 
-      <input type="text" id="keyword" placeholder="Contoh: Agil">
+      <input type="text" id="keyword" placeholder="contoh: muhammad agil">
       <button onclick="verifikasiData()">Verifikasi Data</button>
   </div>
 </div>
@@ -140,7 +208,7 @@ button{
 const database = [
 {
     nama: "Prof. Dr. H. Masrukhi, M.Pd.",
-    keyword: "masrukhi",
+    keyword: ["masrukhi"],
     jabatan: "Rektor",
     nidn: "0001016301",
     masaKerja: "2022 – 2026",
@@ -150,7 +218,7 @@ const database = [
 },
 {
     nama: "Dr. Andi Setiawan, S.E., M.M.",
-    keyword: "andi",
+    keyword: ["andi","andi setiawan"],
     jabatan: "Dekan Fakultas Bisnis dan Ekonomi",
     nidn: "0412107502",
     masaKerja: "2023 – 2027",
@@ -160,22 +228,31 @@ const database = [
 },
 {
     nama: "Muhammad Agil, S.M., M.M., M.Ling.",
-    keyword: "muhammad agil",
+    keyword: ["agil","muhammad agil, Muhammad Agil, Agil"],
     jabatan: "Dosen Manajemen",
     nidn: "01261627119",
-    masaKerja: "01 maret – 01 juni 2026",
+    masaKerja: "1 Maret 2026 – 1 Juni 2026",
     noSK: "SK Pengangkatan No. 210/FBE/2026",
     status: "Aktif",
     kepegawaian: "Dosen Kontrak"
 }
 ];
 
+function formatTanggal(){
+    const t = new Date();
+    return t.toLocaleDateString("id-ID",{
+        day:"numeric",
+        month:"long",
+        year:"numeric"
+    });
+}
+
 function verifikasiData(){
 
-    const input = document.getElementById("keyword").value.toLowerCase();
+    const input = document.getElementById("keyword").value.toLowerCase().trim();
 
-    const data = database.find(item => 
-        item.keyword.includes(input)
+    const data = database.find(d =>
+        d.keyword.some(k => k.includes(input))
     );
 
     document.getElementById("halamanAwal").style.display="none";
@@ -184,30 +261,32 @@ function verifikasiData(){
     if(data){
 
         const badgeClass = data.status === "Aktif" ? "aktif" : "tidak";
-        const icon = data.status === "Aktif" ? "✅ Terverifikasi" : "❌ Tidak Aktif";
+        const icon = data.status === "Aktif" ? "✔ Terverifikasi" : "✖ Tidak Aktif";
 
         document.getElementById("hasilKonten").innerHTML = `
-            <h3 style="text-align:center;color:green;">DATA DITEMUKAN</h3>
-            <div style="text-align:center;margin-bottom:15px;">
-                <span class="status-badge ${badgeClass}">
-                    ${icon}
-                </span>
+            <div style="text-align:center">
+                <div class="status-title">DATA DITEMUKAN</div>
+                <div class="badge ${badgeClass}">${icon}</div>
             </div>
 
-            <div class="data-item"><strong>Nama Lengkap :</strong> ${data.nama}</div>
-            <div class="data-item"><strong>Jabatan :</strong> ${data.jabatan}</div>
-            <div class="data-item"><strong>Status Kepegawaian :</strong> ${data.kepegawaian}</div>
-            <div class="data-item"><strong>NIDN/NIDK :</strong> ${data.nidn}</div>
-            <div class="data-item"><strong>Masa Jabatan :</strong> ${data.masaKerja}</div>
-            <div class="data-item"><strong>Nomor SK :</strong> ${data.noSK}</div>
-            <div class="data-item"><strong>Tanggal Verifikasi :</strong> ${new Date().toLocaleDateString()}</div>
+            <div class="data-grid">
+                <div class="row"><div class="label">Nama Lengkap</div><div class="value">${data.nama}</div></div>
+                <div class="row"><div class="label">Jabatan</div><div class="value">${data.jabatan}</div></div>
+                <div class="row"><div class="label">Status Kepegawaian</div><div class="value">${data.kepegawaian}</div></div>
+                <div class="row"><div class="label">NIDN/NIDK</div><div class="value">${data.nidn}</div></div>
+                <div class="row"><div class="label">Masa Jabatan</div><div class="value">${data.masaKerja}</div></div>
+                <div class="row"><div class="label">Nomor SK</div><div class="value">${data.noSK}</div></div>
+                <div class="row"><div class="label">Tanggal Verifikasi</div><div class="value">${formatTanggal()}</div></div>
+            </div>
         `;
 
     } else {
 
         document.getElementById("hasilKonten").innerHTML = `
-            <h3 style="color:red;text-align:center;">DATA TIDAK DITEMUKAN</h3>
-            <p style="text-align:center;">Data tidak terdaftar dalam sistem verifikasi internal.</p>
+            <div style="text-align:center">
+                <div class="status-title" style="color:#b42318">DATA TIDAK DITEMUKAN</div>
+                <p>Data tidak terdaftar dalam sistem verifikasi akademik.</p>
+            </div>
         `;
     }
 }
@@ -216,7 +295,6 @@ function kembali(){
     document.getElementById("halamanHasil").style.display="none";
     document.getElementById("halamanAwal").style.display="flex";
 }
-
 </script>
 
 </body>
