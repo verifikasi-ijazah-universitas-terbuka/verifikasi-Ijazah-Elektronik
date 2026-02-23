@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -183,67 +184,189 @@ font-weight:600;
 <button class="btn" onclick="verifikasi()">Verifikasi Data</button>
 </div>
 
-<!-- HASIL -->
-<div class="section result" id="resultSection">
+<!-- Hasil-->
+  <!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Verifikasi Data Dosen | Universitas Muhammadiyah Semarang</title>
 
-<h2>Hasil Verifikasi Data Dosen</h2>
-<p>Data berikut terverifikasi dalam sistem akademik resmi</p>
-
-<div class="profile-card">
-
-<div class="profile-item">
-<strong>Nama Lengkap</strong>
-<span>Muhammad Agil,S.M., M.M., M.Ling.</span>
-</div>
-
-<div class="profile-item">
-<strong>NIDN / NIDK</strong>
-<span>00251276278</span>
-</div>
-
-<div class="profile-item">
-<strong>Program Studi</strong>
-<span>Manajemen</span>
-</div>
-
-<div class="profile-item">
-<strong>Fakultas</strong>
-<span>Ekonomi dan Bisnis</span>
-</div>
-
-<div class="profile-item">
-<strong>Jabatan Akademik</strong>
-<span>Dosen Kontrak</span>
-</div>
-
-<div class="profile-item">
-<strong>Status Verifikasi</strong>
-<span class="status-badge">VALID / AKTIF</span>
-</div>
-
-</div>
-</div>
-
-<div class="footer">
-© 2026 <span>Universitas Muhammadiyah Semarang</span> — Sistem Verifikasi Akademik Resmi
-</div>
-
-</div>
-
-<script>
-function verifikasi(){
-var input = document.getElementById("keyword").value.trim();
-
-if(input === ""){
-alert("Silakan masukkan NIDN / NIDK / Nama terlebih dahulu.");
-return;
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f6f9;
 }
 
-document.getElementById("searchSection").style.display="none";
-document.getElementById("resultSection").style.display="block";
-window.scrollTo(0,0);
+/* HEADER */
+.header {
+  background-color: #0d2f5f;
+  text-align: center;
+  padding: 40px 20px;
+  color: white;
 }
-</script>
 
+.header h1 {
+  margin: 10px 0 0;
+  font-size: 26px;
+  letter-spacing: 2px;
+}
+
+.header p {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.ornamen-line {
+  height: 4px;
+  background: linear-gradient(to right, #c9a227, #f1c40f, #c9a227);
+}
+
+/* CONTAINER */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* CARD */
+.card-verifikasi {
+  background: #ffffff;
+  padding: 30px;
+  border-left: 6px solid #d4af37;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* DATA ITEM */
+.data-item {
+  margin-bottom: 18px;
+}
+
+.data-item strong {
+  display: block;
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 4px;
+}
+
+.data-item p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #222;
+  margin: 0;
+}
+
+/* STATUS BADGE */
+.status-badge {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 600;
+  margin-top: 25px;
+}
+
+.status-badge.aktif {
+  background: linear-gradient(to right, #c9a227, #f1c40f);
+  color: #000;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  font-size: 12px;
+  color: #777;
+  margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>UNIVERSITAS MUHAMMADIYAH SEMARANG</h1>
+  <p>Portal Resmi Verifikasi Data Dosen</p>
+</div>
+
+<div class="ornamen-line"></div>
+
+<div class="container">
+  <div class="card-verifikasi">
+
+    <div class="data-item">
+      <strong>Nama Lengkap</strong>
+      <p>Muhammad Agil, S.M., M.M., M.Ling.</p>
+    </div>
+
+    <div class="data-item">
+      <strong>NIDN / NIDK</strong>
+      <p>00251276278</p>
+    </div>
+
+    <div class="data-item">
+      <strong>Tempat, Tanggal Lahir</strong>
+      <p>Semarang, 25 Desember 1987</p>
+    </div>
+
+    <div class="data-item">
+      <strong>Program Studi</strong>
+      <p>Manajemen</p>
+    </div>
+
+    <div class="data-item">
+      <strong>Fakultas</strong>
+      <p>Ekonomi dan Bisnis</p>
+    </div>
+
+    <div class="data-item">
+      <strong>Jabatan Akademik</strong>
+      <p>Dosen Kontrak</p>
+    </div>
+
+    <div class="data-item">
+      <strong>Nomor SK Pengangkatan</strong>
+      <p>0123/SK-UNIMUS/II/2024</p>
+    </div>
+
+    <div class="data-item">
+      <strong>Tanggal SK</strong>
+      <p>15 Februari 2024</p>
+    </div>
+
+    <div class="data-item">
+      <strong>Masa Kontrak</strong>
+      <p>01 Maret 2024 – 28 Februari 2026</p>
+    </div>
+
+    <div class="data-item">
+      <strong>Status Kepegawaian</strong>
+      <p>Aktif</p>
+    </div>
+
+    <div class="data-item">
+      <strong>Nomor Registrasi Verifikasi</strong>
+      <p>VRF-UNIMUS-2026-000145</p>
+    </div>
+
+    <div class="data-item">
+      <strong>Waktu Verifikasi Sistem</strong>
+      <p>23 Februari 2026 | 14:43 WIB</p>
+    </div>
+
+    <div class="status-badge aktif">
+      ✓ TERVALIDASI & AKTIF
+    </div>
+
+  </div>
+
+  <div class="footer">
+    © 2026 Universitas Muhammadiyah Semarang — Sistem Verifikasi Internal
+  </div>
+</div>
+
+</body>
+</html>
 </body>
 </html>
