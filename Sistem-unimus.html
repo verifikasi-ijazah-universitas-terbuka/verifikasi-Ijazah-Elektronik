@@ -42,16 +42,6 @@ body::before{
   pointer-events:none;
 }
 
-.wave-top{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:120px;
-  background:linear-gradient(180deg,rgba(255,255,255,.35),transparent);
-  clip-path:ellipse(70% 100% at 50% 0%);
-}
-
 /* ================= HEADER ================= */
 .header{
   background:linear-gradient(90deg,var(--biru),var(--biru2));
@@ -66,7 +56,7 @@ body::before{
 }
 
 .header img{
-  width:120px;
+  width:140px;
 }
 
 /* lingkaran */
@@ -105,19 +95,8 @@ body::before{
   pointer-events:none;
 }
 
-.header-text{
-  line-height:1.25;
-}
-
-.header-text .u{
-  font-size:16px;
-  opacity:.9;
-}
-
-.header-text .n{
-  font-size:30px;
-  font-weight:700;
-}
+.header-text .u{font-size:16px;opacity:.9;}
+.header-text .n{font-size:30px;font-weight:700;}
 
 .header-info{
   font-size:13px;
@@ -138,7 +117,6 @@ body::before{
 .page{
   display:none;
   padding:50px 70px 90px;
-  position:relative;
 }
 .page.active{display:block;}
 
@@ -161,7 +139,6 @@ body::before{
   border-radius:16px;
   pointer-events:none;
 }
-
 .card-outline2{
   position:absolute;
   inset:20px;
@@ -178,36 +155,9 @@ body::before{
   border:3px solid var(--emas2);
   border-radius:20px;
   opacity:.15;
-  pointer-events:none;
 }
 .corner-tl{top:-80px;left:-80px;}
 .corner-br{bottom:-80px;right:-80px;}
-
-/* lingkaran */
-.card::before{
-  content:"";
-  position:absolute;
-  right:-100px;
-  top:-100px;
-  width:360px;
-  height:360px;
-  border-radius:50%;
-  border:2px dashed var(--emas2);
-  opacity:.25;
-  pointer-events:none;
-}
-.card::after{
-  content:"";
-  position:absolute;
-  left:-100px;
-  bottom:-100px;
-  width:360px;
-  height:360px;
-  border-radius:50%;
-  border:2px dashed var(--biru3);
-  opacity:.18;
-  pointer-events:none;
-}
 
 /* watermark */
 .watermark{
@@ -215,89 +165,15 @@ body::before{
   inset:0;
   background:url("logo-unimus.png") center/360px no-repeat;
   opacity:.035;
-  pointer-events:none;
-}
-
-/* ================= SEARCH ================= */
-.search-box{
-  max-width:640px;
-  margin:auto;
-  text-align:center;
-}
-
-.search-logo{
-  width:190px;
-  margin-bottom:14px;
-}
-
-.search-title{
-  font-size:30px;
-  color:var(--biru);
-  font-weight:700;
-}
-
-.search-sub{
-  font-size:14px;
-  color:var(--muted);
-  margin-bottom:30px;
-}
-
-.search-input{
-  width:100%;
-  padding:16px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  font-size:14px;
-  background:linear-gradient(180deg,var(--grad1),var(--grad2));
-  box-shadow:inset 0 2px 4px rgba(0,0,0,.05);
-}
-
-/* ================= BUTTON ================= */
-.btn{
-  padding:13px 26px;
-  border-radius:10px;
-  border:none;
-  cursor:pointer;
-  font-weight:600;
-  transition:.2s;
-}
-
-.btn-primary{
-  background:linear-gradient(90deg,var(--biru),var(--biru2));
-  color:#fff;
-}
-
-.btn-back{
-  background:linear-gradient(90deg,#dbeafe,#bfdbfe);
-  color:#0b3c74;
-}
-
-.btn-row{
-  margin-top:26px;
-  display:flex;
-  gap:14px;
-  justify-content:center;
 }
 
 /* ================= PROFILE ================= */
 .logo-center{text-align:center;}
-.logo-center img{width:180px;}
+.logo-center img{width:200px;}
 
-.instansi{
-  text-align:center;
-  margin-bottom:15px;
-}
-
-.instansi .nama{
-  font-size:24px;
-  font-weight:700;
-  color:var(--biru);
-}
-
-.instansi .status{
-  font-size:14px;
-  color:var(--muted);
-}
+.instansi{text-align:center;margin-bottom:15px;}
+.instansi .nama{font-size:24px;font-weight:700;color:var(--biru);}
+.instansi .status{font-size:14px;color:var(--muted);}
 
 .divider{
   height:2px;
@@ -310,34 +186,37 @@ body::before{
   gap:36px;
 }
 
+/* ================= FOTO DOSEN (FIX) ================= */
 .photo{
-  width:230px;
-  height:290px;
-  border-radius:14px;
+  width:240px;
+  aspect-ratio:3/4;
+  border-radius:16px;
   overflow:hidden;
-  border:5px solid #e6eaf1;
+  border:6px solid #eef2f7;
+  background:linear-gradient(180deg,#f8fbff,#eef3f9);
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
+
 .photo img{
   width:100%;
   height:100%;
-  object-fit:cover;
+  object-fit:contain;
 }
 
+/* ================= TABLE ================= */
 .identity-table table{
   width:100%;
   border-collapse:collapse;
 }
-
 .identity-table td{
   border:1px solid var(--border);
   padding:11px 15px;
   font-size:14px;
 }
-
-.identity-table tr:nth-child(odd){
-  background:#f8fafc;
-}
-
+.identity-table tr:nth-child(odd){background:#f8fafc;}
 .identity-table td:first-child{
   width:240px;
   font-weight:600;
@@ -353,60 +232,41 @@ body::before{
   border-radius:10px;
   background:linear-gradient(180deg,#ffffff,#f8fbff);
 }
-
 .ps-title{
   font-weight:700;
   color:var(--biru);
   margin-bottom:6px;
 }
-
 .beban{
   margin-top:10px;
   font-size:14px;
   color:#374151;
 }
 
-/* ================= TASK ================= */
-.task-table table{
-  width:100%;
-  border-collapse:collapse;
+/* ================= BUTTON ================= */
+.btn{
+  padding:13px 26px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
 }
-
-.task-table th{
+.btn-primary{
   background:linear-gradient(90deg,var(--biru),var(--biru2));
   color:#fff;
-  padding:11px;
-  font-size:14px;
+}
+.btn-back{
+  background:linear-gradient(90deg,#dbeafe,#bfdbfe);
+  color:#0b3c74;
+}
+.btn-row{
+  margin-top:26px;
+  display:flex;
+  gap:14px;
+  justify-content:center;
 }
 
-.task-table td{
-  border:1px solid var(--border);
-  padding:10px;
-  font-size:14px;
-}
-
-.task-table tr:nth-child(even){
-  background:#f1f6ff;
-}
-
-/* ================= SIGN ================= */
-.sign{
-  margin-top:42px;
-  border-top:2px solid var(--border);
-  padding-top:22px;
-}
-
-.sign-item{
-  margin-bottom:16px;
-}
-
-.line{
-  height:1px;
-  background:var(--border);
-  margin:14px 0;
-}
-
-/* ================= FOOTER ================= */
+/* ================= SCRIPT PAGES ================= */
 .footer{
   margin-top:36px;
   text-align:center;
@@ -416,61 +276,10 @@ body::before{
   padding-top:14px;
 }
 
-/* ================= LOADING ================= */
-.loading-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(255,255,255,.85);
-  backdrop-filter:blur(5px);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-  opacity:0;
-  pointer-events:none;
-  transition:.3s;
-}
-.loading-overlay.active{
-  opacity:1;
-  pointer-events:auto;
-}
-
-.loader-box{
-  background:#fff;
-  padding:32px 44px;
-  border-radius:18px;
-  box-shadow:0 15px 40px rgba(0,0,0,.15);
-  text-align:center;
-  border-top:5px solid var(--emas);
-}
-
-.spinner{
-  width:44px;
-  height:44px;
-  border:4px solid #e5e7eb;
-  border-top:4px solid var(--biru);
-  border-radius:50%;
-  animation:spin 1s linear infinite;
-  margin:auto;
-}
-@keyframes spin{to{transform:rotate(360deg);}}
-
 </style>
 </head>
 
 <body>
-
-<div id="loading" class="loading-overlay">
-  <div class="loader-box">
-    <div class="spinner"></div>
-    <div style="margin-top:12px;font-weight:600;color:#0b3c74">
-      Memuat Sistem Akademik
-    </div>
-    <div style="font-size:12px;color:#6b7280">
-      Universitas Muhammadiyah Semarang
-    </div>
-  </div>
-</div>
 
 <div class="header">
   <div class="header-lines"></div>
@@ -488,37 +297,8 @@ body::before{
   </div>
 </div>
 
-<!-- SEARCH -->
-<div id="pageSearch" class="page active">
-  <div class="card search-box">
-    <div class="card-outline"></div>
-    <div class="card-outline2"></div>
-    <div class="card-corner corner-tl"></div>
-    <div class="card-corner corner-br"></div>
-    <div class="watermark"></div>
-
-    <img src="logo-unimus.png" class="search-logo">
-
-    <div class="search-title">Sistem Informasi Dosen Kontrak</div>
-    <div class="search-sub">Pencarian berdasarkan Nama / NIDN / NIDK</div>
-
-    <input id="keyword" class="search-input"
-    placeholder="Masukkan Nama atau NIDN / NIDK">
-
-    <div class="btn-row">
-      <button class="btn btn-primary" onclick="search()">Cari Data</button>
-    </div>
-
-    <div class="footer">
-      Biro Administrasi Akademik<br>
-      Sistem Informasi Kepegawaian Akademik<br>
-      © Universitas Muhammadiyah Semarang 2026
-    </div>
-  </div>
-</div>
-
 <!-- PROFILE -->
-<div id="pageProfile" class="page">
+<div class="page active">
   <div class="card">
     <div class="card-outline"></div>
     <div class="card-outline2"></div>
@@ -578,112 +358,8 @@ body::before{
       </div>
     </div>
 
-    <div class="btn-row" style="justify-content:space-between;margin-top:32px">
-      <button class="btn btn-back" onclick="backSearch()">Kembali</button>
-      <button class="btn btn-primary" onclick="openTask()">Lihat Penugasan</button>
-    </div>
   </div>
 </div>
-
-<!-- TASK -->
-<div id="pageTask" class="page">
-  <div class="card">
-    <div class="card-outline"></div>
-    <div class="card-outline2"></div>
-    <div class="card-corner corner-tl"></div>
-    <div class="card-corner corner-br"></div>
-    <div class="watermark"></div>
-
-    <div class="logo-center">
-      <img src="logo-unimus.png">
-    </div>
-
-    <div class="instansi">
-      <div class="nama">Universitas Muhammadiyah Semarang</div>
-      <div class="status">Penugasan Dosen Kontrak</div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="task-table">
-      <table>
-        <tr>
-          <th>No</th>
-          <th>Kode</th>
-          <th>Mata Kuliah</th>
-          <th>Kelas</th>
-          <th>SKS</th>
-          <th>Hari</th>
-        </tr>
-        <tr><td>1</td><td>MNB101</td><td>Pengantar Manajemen</td><td>A</td><td>3</td><td>Senin</td></tr>
-        <tr><td>2</td><td>MSDM201</td><td>Manajemen SDM</td><td>B</td><td>3</td><td>Rabu</td></tr>
-        <tr><td>3</td><td>MNP301</td><td>Manajemen Pemasaran</td><td>A</td><td>3</td><td>Jumat</td></tr>
-        <tr><td>4</td><td>MNB210</td><td>Perilaku Organisasi</td><td>C</td><td>1</td><td>Selasa</td></tr>
-        <tr><td>5</td><td>MNB220</td><td>Etika Bisnis</td><td>B</td><td>1</td><td>Kamis</td></tr>
-        <tr><td>6</td><td>MNB230</td><td>Hukum Bisnis</td><td>A</td><td>1</td><td>Sabtu</td></tr>
-      </table>
-    </div>
-
-    <div class="sign">
-      <div class="sign-item">
-        <b>Rektor</b><br>
-        Prof. Dr. H. Masrukhi, M.Pd.
-      </div>
-      <div class="line"></div>
-      <div class="sign-item">
-        <b>Dekan FEB</b><br>
-        Dr. H. Sutrisno, S.E., M.Si.
-      </div>
-      <div class="line"></div>
-      <div class="sign-item">
-        <b>Dosen</b><br>
-        Muhammad Agil, S.M., M.M., M.Ling.
-      </div>
-    </div>
-
-    <div class="btn-row" style="justify-content:flex-start;margin-top:28px">
-      <button class="btn btn-back" onclick="backProfile()">Kembali ke Profil</button>
-    </div>
-
-    <div class="footer">
-      Sistem Informasi Penugasan Dosen Kontrak<br>
-      © Universitas Muhammadiyah Semarang 2026
-    </div>
-  </div>
-</div>
-
-<script>
-function showLoading(){
-  document.getElementById("loading").classList.add("active");
-}
-function hideLoading(){
-  setTimeout(()=>{
-    document.getElementById("loading").classList.remove("active");
-  },500);
-}
-
-function showPage(id){
-  showLoading();
-  setTimeout(()=>{
-    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
-    hideLoading();
-  },400);
-}
-
-function search(){
-  const k=document.getElementById("keyword").value.toLowerCase();
-  if(k.includes("agil")||k.includes("01261627119")){
-    showPage("pageProfile");
-  }else{
-    alert("Data tidak ditemukan");
-  }
-}
-
-function backSearch(){showPage("pageSearch");}
-function openTask(){showPage("pageTask");}
-function backProfile(){showPage("pageProfile");}
-</script>
 
 </body>
-  </html>
+</html>
