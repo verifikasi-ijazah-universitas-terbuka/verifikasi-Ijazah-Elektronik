@@ -7,162 +7,192 @@
 
 <style>
 :root{
-    --hijau:#0f7a3b;
-    --hijau2:#0c5f2e;
-    --abu:#f1f3f7;
-    --teks:#1f2937;
+  --biru:#0b3c74;
+  --biru2:#082b55;
+  --emas:#c6a54a;
+  --emas2:#e5c76b;
+  --abu:#eef1f6;
+  --teks:#1f2937;
 }
 
 body{
-    margin:0;
-    font-family:"Segoe UI",Arial,sans-serif;
-    background:#eef1f6;
+  margin:0;
+  font-family:"Segoe UI",Arial;
+  background:var(--abu);
+  color:var(--teks);
 }
 
 /* HEADER */
 .header{
-    background:linear-gradient(90deg,var(--hijau),var(--hijau2));
-    color:#fff;
-    padding:18px 40px;
-    display:flex;
-    align-items:center;
-    gap:16px;
+  background:linear-gradient(90deg,var(--biru),var(--biru2));
+  color:#fff;
+  padding:22px 50px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  border-bottom:4px solid var(--emas);
 }
 .header img{
-    width:64px;
+  width:70px;
 }
-.header-text{
-    line-height:1.2;
-}
-.header-text .u{
-    font-size:15px;
-}
-.header-text .n{
-    font-size:22px;
-    font-weight:600;
-}
+.header-text .u{font-size:16px}
+.header-text .n{font-size:24px;font-weight:600}
 
-/* HALAMAN PENCARIAN */
+/* HALAMAN CARI */
 #halamanCari{
-    padding:60px 20px;
-    text-align:center;
+  height:calc(100vh - 90px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 .cari-box{
-    background:#fff;
-    max-width:520px;
-    margin:auto;
-    padding:40px;
-    border-radius:14px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
+  background:#fff;
+  width:520px;
+  padding:50px 40px;
+  border-radius:16px;
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+  text-align:center;
+  border-top:6px solid var(--emas);
+}
+.logo-besar{
+  width:110px;
+  margin-bottom:15px;
+}
+.instansi{
+  font-size:14px;
+  color:#6b7280;
+  margin-bottom:25px;
 }
 input{
-    width:100%;
-    padding:14px;
-    border:1px solid #d1d5db;
-    border-radius:8px;
-    margin-top:10px;
-}
-button{
-    padding:12px 18px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:600;
+  width:100%;
+  padding:14px;
+  border-radius:8px;
+  border:1px solid #d1d5db;
+  margin-top:10px;
 }
 .btn-cari{
-    background:var(--hijau);
-    color:#fff;
-    margin-top:18px;
-    width:100%;
+  margin-top:18px;
+  width:100%;
+  background:linear-gradient(90deg,var(--biru),var(--biru2));
+  color:#fff;
+  border:none;
+  padding:13px;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
 }
 
 /* HALAMAN DOSEN */
 #halamanDosen{
-    display:none;
-    padding:30px 40px 60px;
+  display:none;
+  padding:40px 50px 70px;
 }
 .kartu{
-    background:#fff;
-    padding:30px;
-    border-radius:14px;
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
+  background:#fff;
+  border-radius:16px;
+  padding:35px;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
+  border-top:6px solid var(--emas);
 }
+
+/* IDENTITAS */
 .identitas{
-    display:grid;
-    grid-template-columns:120px 1fr auto;
-    gap:20px;
-    align-items:start;
+  display:grid;
+  grid-template-columns:140px 1fr auto;
+  gap:25px;
+  align-items:start;
 }
 .foto{
-    width:120px;
-    height:150px;
-    border-radius:10px;
-    overflow:hidden;
-    border:3px solid #e5e7eb;
+  width:140px;height:180px;
+  border-radius:12px;
+  overflow:hidden;
+  border:4px solid #e5e7eb;
 }
-.foto img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+.foto img{width:100%;height:100%;object-fit:cover}
+
+.data{
+  font-size:15px;
+  line-height:1.7;
 }
-.data div{
-    margin:6px 0;
-}
+.data b{color:var(--biru)}
+
 .btn-area{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
-.btn-kembali{background:#d1d5db;}
-.btn-tugas{background:#16a34a;color:#fff;}
-
-.pemisah{
-    margin:30px 0;
-    border-top:2px dashed #d1d5db;
+.btn-kembali{
+  background:#e5e7eb;
+  border:none;
+  padding:11px 16px;
+  border-radius:8px;
+  cursor:pointer;
+}
+.btn-tugas{
+  background:linear-gradient(90deg,var(--biru),var(--biru2));
+  color:#fff;
+  border:none;
+  padding:11px 16px;
+  border-radius:8px;
+  cursor:pointer;
 }
 
-/* PROFIL */
-.profil{
-    margin-top:20px;
+/* TRANSISI */
+#areaTugas{
+  margin-top:35px;
+  opacity:0;
+  transform:translateY(30px);
+  transition:.5s;
+}
+#areaTugas.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* TABEL */
 table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:16px;
-    font-size:14px;
+  width:100%;
+  border-collapse:collapse;
+  margin-top:18px;
+  font-size:14px;
 }
 th{
-    background:var(--hijau);
-    color:#fff;
-    padding:10px;
+  background:var(--biru);
+  color:#fff;
+  padding:10px;
 }
 td{
-    padding:10px;
-    border:1px solid #e5e7eb;
+  padding:10px;
+  border:1px solid #e5e7eb;
 }
-tr:nth-child(even){background:#f9fafb;}
+tr:nth-child(even){background:#f9fafb}
 
 /* TTD */
 .ttd-area{
-    display:flex;
-    justify-content:space-between;
-    margin-top:50px;
+  display:flex;
+  justify-content:space-between;
+  margin-top:60px;
 }
 .ttd{
-    text-align:center;
+  text-align:center;
+  width:30%;
 }
 .ttd img{
-    height:60px;
+  height:60px;
+}
+.ttd .jabatan{
+  font-weight:600;
+  margin-bottom:8px;
 }
 
 /* FOOTER */
 .footer{
-    text-align:center;
-    color:#6b7280;
-    font-size:13px;
-    margin-top:50px;
+  margin-top:50px;
+  text-align:center;
+  color:#6b7280;
+  font-size:13px;
+  border-top:1px solid #e5e7eb;
+  padding-top:15px;
 }
 </style>
 </head>
@@ -170,125 +200,138 @@ tr:nth-child(even){background:#f9fafb;}
 <body>
 
 <div class="header">
-    <img src="logo-unimus.png">
-    <div class="header-text">
-        <div class="u">Universitas</div>
-        <div class="n">Muhammadiyah Semarang</div>
-    </div>
+  <img src="logo-unimus.png">
+  <div class="header-text">
+    <div class="u">Universitas</div>
+    <div class="n">Muhammadiyah Semarang</div>
+  </div>
 </div>
 
-<!-- HALAMAN CARI -->
+<!-- CARI -->
 <div id="halamanCari">
-    <div class="cari-box">
-        <h2>Pencarian Tugas Dosen Kontrak</h2>
-        <input id="keyword" placeholder="Masukkan Nama / NIDK / Program Studi">
-        <button class="btn-cari" onclick="cariDosen()">Cari Data Dosen</button>
+  <div class="cari-box">
+    <img src="logo-unimus.png" class="logo-besar">
+    <h2>Pencarian Tugas Dosen Kontrak</h2>
+    <div class="instansi">
+      Biro Administrasi Akademik  
+      <br>© Universitas Muhammadiyah Semarang 2026
     </div>
+    <input id="keyword" placeholder="Masukkan Nama Dosen">
+    <button class="btn-cari" onclick="cari()">Cari Data</button>
+  </div>
 </div>
 
-<!-- HALAMAN DOSEN -->
+<!-- DOSEN -->
 <div id="halamanDosen">
-    <div class="kartu">
+  <div class="kartu">
 
-        <div class="identitas">
-            <div class="foto">
-                <img src="foto-agil.jpg">
-            </div>
+    <div class="identitas">
+      <div class="foto">
+        <img src="foto-agil.jpg">
+      </div>
 
-            <div class="data">
-                <div><b>Nama</b> : Muhammad Agil, S.M., M.M., M.Ling.</div>
-                <div><b>NIDK</b> : 01261627119</div>
-                <div><b>Program Studi</b> : Manajemen Bisnis dan SDM</div>
-                <div><b>Status</b> : Dosen Kontrak</div>
-                <div><b>Periode</b> : 2 Maret 2026 – 2 Juni 2026</div>
-                <div><b>Total Beban</b> : 12 SKS</div>
-                <div><b>Pendidikan S1 : Universitas Terbuka (Manajemen)</b>
-                <div><b>Pendidikan S2 : Universitas Islam Indonesia (Manajemen)</b>
-                <div><b>Pendidikan S2 : Universitas Terbuka (Studi Ilmu Lingkungan)</b>
-            </div>
+      <div class="data">
+        <div><b>Nama</b> : Muhammad Agil, S.M., M.M., M.Ling.</div>
+        <div><b>NIDK</b> : 01261627119</div>
+        <div><b>Program Studi</b> : Manajemen Bisnis dan SDM</div>
+        <div><b>Status</b> : Dosen Kontrak</div>
+        <div><b>Periode Kontrak</b> : 2 Maret 2026 – 2 Juni 2026</div>
+        <div><b>Total Beban Mengajar</b> : 12 SKS</div>
+        <div><b>Pendidikan</b> : 
+        S1 Manajemen (Universitas Terbuka); 
+        S2 Manajemen (UII); 
+        S2 Ilmu Lingkungan (UT)
+        </div>
+      </div>
 
-            <div class="btn-area">
-                <button class="btn-kembali" onclick="kembali()">Kembali</button>
-                <button class="btn-tugas" onclick="tampilTugas()">Lihat Tugas</button>
-            </div>
+      <div class="btn-area">
+        <button class="btn-kembali" onclick="kembali()">Kembali</button>
+        <button class="btn-tugas" onclick="tugas()">Lihat Tugas</button>
+      </div>
+    </div>
+
+    <!-- TUGAS -->
+    <div id="areaTugas">
+      <h3>Penugasan Pengajaran Dosen Kontrak</h3>
+      <p>
+      Muhammad Agil merupakan dosen kontrak Program Studi Manajemen Bisnis dan SDM
+      Universitas Muhammadiyah Semarang yang melaksanakan kegiatan pengajaran
+      selama periode 2 Maret 2026 – 2 Juni 2026 dengan frekuensi 2–3 kali per minggu
+      dan total beban 12 SKS sesuai Surat Tugas Fakultas.
+      </p>
+
+      <b>Periode :</b> 2 Maret 2026 – 2 Juni 2026
+
+      <table>
+        <tr>
+          <th>No</th><th>Kode MK</th><th>Mata Kuliah</th>
+          <th>Kelas</th><th>SKS</th><th>Hari</th><th>Tanggal</th>
+        </tr>
+
+        <tr><td>1</td><td>MNB101</td><td>Pengantar Manajemen</td><td>A</td><td>3</td><td>Senin</td><td>3 Mar 2026</td></tr>
+        <tr><td>2</td><td>MSDM201</td><td>Manajemen SDM</td><td>B</td><td>3</td><td>Rabu</td><td>5 Mar 2026</td></tr>
+        <tr><td>3</td><td>MNP301</td><td>Manajemen Pemasaran</td><td>A</td><td>3</td><td>Jumat</td><td>7 Mar 2026</td></tr>
+        <tr><td>4</td><td>MNB210</td><td>Perilaku Organisasi</td><td>C</td><td>1</td><td>Selasa</td><td>11 Mar 2026</td></tr>
+        <tr><td>5</td><td>MNB220</td><td>Etika Bisnis</td><td>B</td><td>1</td><td>Kamis</td><td>13 Mar 2026</td></tr>
+        <tr><td>6</td><td>MNB230</td><td>Hukum Bisnis</td><td>A</td><td>1</td><td>Sabtu</td><td>15 Mar 2026</td></tr>
+
+      </table>
+
+      <!-- TTD -->
+      <div class="ttd-area">
+
+        <div class="ttd">
+          <div class="jabatan">Dosen Kontrak</div>
+          <img src="ttd-dosen.png"><br>
+          Muhammad Agil, S.M., M.M., M.Ling.<br>
+          NIDK 01261627119
         </div>
 
-        <div class="pemisah"></div>
-
-        <div id="areaTugas" style="display:none">
-
-            <h3>Profil dan Tugas Pengajaran Dosen Kontrak</h3>
-            <p>
-            Dr. Ahmad Fauzi, M.Kom merupakan dosen kontrak Program Studi Informatika
-            Universitas Muhammadiyah Semarang yang melaksanakan kegiatan pengajaran
-            selama periode kontrak 2 Maret 2026 sampai 2 Juni 2026 dengan total
-            beban 12 SKS dan frekuensi mengajar 2–3 kali per minggu sesuai jadwal fakultas.
-            </p>
-
-            <b>Periode Tugas :</b> 2 Maret 2026 – 2 Juni 2026
-
-            <table>
-                <tr>
-                    <th>No</th>
-                    <th>Kode MK</th>
-                    <th>Mata Kuliah</th>
-                    <th>Kelas</th>
-                    <th>SKS</th>
-                    <th>Hari</th>
-                    <th>Tanggal</th>
-                </tr>
-
-                <tr><td>1</td><td>MNJB20</td><td>Pengantar Manajemen Bisnis</td><td>IF-A</td><td>3</td><td>Senin</td><td>3 Maret 2026</td></tr>
-                <tr><td>2</td><td>MGTMSDM305</td><td>Manajemen SDM</td><td>IF-B</td><td>3</td><td>Rabu</td><td>5 Maret 2026</td></tr>
-                <tr><td>3</td><td>MNJ308</td><td>Manajemen Pemasaran</td><td>IF-A</td><td>3</td><td>Jumat</td><td>7 Maret 2026</td></tr>
-                <tr><td>4</td><td>MNJK204</td><td>Manajemen Proyek </td><td>IF-C</td><td>2</td><td>Selasa</td><td>11 Maret 2026</td></tr>
-                <tr><td>5</td><td>MNJU250</td><td>Hukum Bisnis Sistem</td><td>IF-B</td><td>1</td><td>Kamis</td><td>13 Maret 2026</td></tr>
-                <tr><td>6</td><td>MNJH210</td><td>Hukum Manajemen</td><td>MN-A</td><td>0</td><td>Sabtu</td><td>15 Maret 2026</td></tr>
-
-            </table>
-
-            <div class="ttd-area">
-                <div class="ttd">
-                    Mengetahui,<br>Rektor<br>
-                    <img src="ttd-rektor.png"><br>
-                    Prof. Dr. Rektor
-                </div>
-
-                <div class="ttd">
-                    Dekan Fakultas Teknik<br>
-                    <img src="ttd-dekan.png"><br>
-                    Dr. Dekan
-                </div>
-            </div>
-
-            <div class="footer">
-                © 2026 Universitas Muhammadiyah Semarang  
-                <br>Sistem Informasi Penugasan Dosen Kontrak
-            </div>
-
+        <div class="ttd">
+          <div class="jabatan">Rektor</div>
+          <img src="ttd-rektor.png"><br>
+          Prof. Dr. H. Masrukhi, M.Pd.<br>
+          NIP 196805041993031002
         </div>
+
+        <div class="ttd">
+          <div class="jabatan">Dekan FEB</div>
+          <img src="ttd-dekan.png"><br>
+          Dr. H. Sutrisno, S.E., M.Si.<br>
+          NIP 197201152000121001
+        </div>
+
+      </div>
+
+      <div class="footer">
+        Sistem Informasi Penugasan Dosen Kontrak  
+        <br>Biro Administrasi Akademik  
+        <br>© Universitas Muhammadiyah Semarang 2026
+      </div>
 
     </div>
+
+  </div>
 </div>
 
 <script>
-function cariDosen(){
-    const k = document.getElementById("keyword").value.toLowerCase();
-    if(k.includes("fauzi") || k.includes("210325001") || k.includes("informatika")){
-        document.getElementById("halamanCari").style.display="none";
-        document.getElementById("halamanDosen").style.display="block";
-    }else{
-        alert("Data dosen tidak ditemukan");
-    }
+function cari(){
+  const k=document.getElementById("keyword").value.toLowerCase();
+  if(k.includes("muhammad agil")||k.includes("agil")){
+    document.getElementById("halamanCari").style.display="none";
+    document.getElementById("halamanDosen").style.display="block";
+  }else{
+    alert("Data dosen tidak ditemukan");
+  }
 }
 
 function kembali(){
-    document.getElementById("halamanDosen").style.display="none";
-    document.getElementById("halamanCari").style.display="block";
+  document.getElementById("halamanDosen").style.display="none";
+  document.getElementById("halamanCari").style.display="flex";
 }
 
-function tampilTugas(){
-    document.getElementById("areaTugas").style.display="block";
+function tugas(){
+  document.getElementById("areaTugas").classList.add("show");
 }
 </script>
 
