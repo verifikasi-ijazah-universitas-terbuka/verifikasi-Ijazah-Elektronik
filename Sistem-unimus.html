@@ -6,7 +6,6 @@
 <title>Sistem Informasi Dosen Kontrak UNIMUS</title>
 
 <style>
-
 /* ================= ROOT WARNA ================= */
 :root{
   --biru:#0b3c74;
@@ -31,7 +30,7 @@ body{
   color:var(--text);
 }
 
-/* ================= HEADER RESMI ================= */
+/* ================= HEADER ================= */
 .header{
   background:linear-gradient(90deg,var(--biru),var(--biru2));
   color:#fff;
@@ -43,8 +42,6 @@ body{
   position:relative;
   overflow:hidden;
 }
-
-/* ornamen garis melingkar */
 .header::after{
   content:"";
   position:absolute;
@@ -55,7 +52,6 @@ body{
   border-radius:50%;
   border:2px solid rgba(255,255,255,.12);
 }
-
 .header::before{
   content:"";
   position:absolute;
@@ -66,31 +62,11 @@ body{
   border-radius:50%;
   border:2px solid rgba(255,255,255,.08);
 }
-
-.header img{
-  width:72px;
-}
-
-.header-text{
-  line-height:1.25;
-}
-
-.header-text .u{
-  font-size:14px;
-  opacity:.9;
-}
-
-.header-text .n{
-  font-size:26px;
-  font-weight:700;
-}
-
-.header-info{
-  font-size:13px;
-  opacity:.9;
-  margin-top:4px;
-}
-
+.header img{ width:72px; }
+.header-text{ line-height:1.25; }
+.header-text .u{ font-size:14px; opacity:.9; }
+.header-text .n{ font-size:26px; font-weight:700; }
+.header-info{ font-size:13px; opacity:.9; margin-top:4px; }
 .header-badge{
   margin-left:auto;
   background:rgba(255,255,255,.15);
@@ -101,11 +77,8 @@ body{
 }
 
 /* ================= PAGE ================= */
-.page{
-  display:none;
-  padding:45px 60px 80px;
-}
-.page.active{display:block;}
+.page{ display:none; padding:45px 60px 80px; }
+.page.active{ display:block; }
 
 /* ================= CARD ================= */
 .card{
@@ -117,8 +90,6 @@ body{
   position:relative;
   overflow:hidden;
 }
-
-/* ornamen melingkar */
 .card::before{
   content:"";
   position:absolute;
@@ -130,7 +101,6 @@ body{
   border:2px dashed var(--emas2);
   opacity:.25;
 }
-
 .card::after{
   content:"";
   position:absolute;
@@ -142,8 +112,6 @@ body{
   border:2px dashed var(--biru3);
   opacity:.18;
 }
-
-/* watermark */
 .watermark{
   position:absolute;
   inset:0;
@@ -153,29 +121,10 @@ body{
 }
 
 /* ================= SEARCH ================= */
-.search-box{
-  max-width:640px;
-  margin:auto;
-  text-align:center;
-}
-
-.search-logo{
-  width:170px;
-  margin-bottom:10px;
-}
-
-.search-title{
-  font-size:27px;
-  color:var(--biru);
-  font-weight:700;
-}
-
-.search-sub{
-  font-size:14px;
-  color:var(--muted);
-  margin-bottom:28px;
-}
-
+.search-box{ max-width:640px; margin:auto; text-align:center; }
+.search-logo{ width:170px; margin-bottom:10px; }
+.search-title{ font-size:27px; color:var(--biru); font-weight:700; }
+.search-sub{ font-size:14px; color:var(--muted); margin-bottom:28px; }
 .search-input{
   width:100%;
   padding:15px;
@@ -195,21 +144,15 @@ body{
   font-weight:600;
   transition:.2s;
 }
-
 .btn-primary{
   background:linear-gradient(90deg,var(--biru),var(--biru2));
   color:#fff;
 }
-
-.btn-primary:hover{
-  transform:translateY(-1px);
-}
-
+.btn-primary:hover{ transform:translateY(-1px); }
 .btn-back{
   background:linear-gradient(90deg,#dbeafe,#bfdbfe);
   color:#0b3c74;
 }
-
 .btn-row{
   margin-top:22px;
   display:flex;
@@ -220,132 +163,40 @@ body{
 /* ================= PROFILE ================= */
 .logo-center{text-align:center;}
 .logo-center img{width:170px;}
-
-.instansi{
-  text-align:center;
-  margin-bottom:15px;
-}
-
-.instansi .nama{
-  font-size:22px;
-  font-weight:700;
-  color:var(--biru);
-}
-
-.instansi .status{
-  font-size:14px;
-  color:var(--muted);
-}
-
-.divider{
-  height:2px;
-  background:linear-gradient(90deg,var(--emas),transparent);
-  margin:20px 0 30px;
-}
-
-.profile-top{
-  display:flex;
-  gap:34px;
-}
-
-.photo{
-  width:215px;
-  height:270px;
-  border-radius:14px;
-  overflow:hidden;
-  border:5px solid #e6eaf1;
-}
-.photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.identity-table table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-.identity-table td{
-  border:1px solid var(--border);
-  padding:10px 14px;
-  font-size:14px;
-}
-
-.identity-table tr:nth-child(odd){
-  background:#f8fafc;
-}
-
-.identity-table td:first-child{
-  width:230px;
-  font-weight:600;
-  color:var(--biru);
-}
+.instansi{text-align:center;margin-bottom:15px;}
+.instansi .nama{ font-size:22px; font-weight:700; color:var(--biru); }
+.instansi .status{ font-size:14px; color:var(--muted); }
+.divider{ height:2px; background:linear-gradient(90deg,var(--emas),transparent); margin:20px 0 30px; }
+.profile-top{ display:flex; gap:34px; }
+.photo{ width:215px; height:270px; border-radius:14px; overflow:hidden; border:5px solid #e6eaf1; }
+.photo img{ width:100%; height:100%; object-fit:cover; }
+.identity-table table{ width:100%; border-collapse:collapse; }
+.identity-table td{ border:1px solid var(--border); padding:10px 14px; font-size:14px; }
+.identity-table tr:nth-child(odd){ background:#f8fafc; }
+.identity-table td:first-child{ width:230px; font-weight:600; color:var(--biru); }
 
 /* ================= TASK ================= */
-.task-table table{
-  width:100%;
-  border-collapse:collapse;
-}
-
+.task-table table{ width:100%; border-collapse:collapse; }
 .task-table th{
   background:linear-gradient(90deg,var(--biru),var(--biru2));
   color:#fff;
   padding:10px;
   font-size:14px;
 }
-
-.task-table td{
-  border:1px solid var(--border);
-  padding:9px;
-  font-size:14px;
-}
-
-.task-table tr:nth-child(even){
-  background:#f1f6ff;
-}
+.task-table td{ border:1px solid var(--border); padding:9px; font-size:14px; }
+.task-table tr:nth-child(even){ background:#f1f6ff; }
 
 /* ================= SIGN ================= */
-.sign{
-  margin-top:40px;
-  border-top:2px solid var(--border);
-  padding-top:20px;
-}
-
-.sign-item{
-  margin-bottom:14px;
-}
-
-.line{
-  height:1px;
-  background:var(--border);
-  margin:12px 0;
-}
+.sign{ margin-top:40px; border-top:2px solid var(--border); padding-top:20px; }
+.sign-item{ margin-bottom:14px; }
+.line{ height:1px; background:var(--border); margin:12px 0; }
 
 /* ================= TEXT PROFIL ================= */
-.section-title{
-  font-size:18px;
-  font-weight:700;
-  color:var(--biru);
-  margin-top:28px;
-}
-
-.profile-text{
-  font-size:14px;
-  line-height:1.6;
-  color:var(--text);
-  margin-top:8px;
-}
+.section-title{ font-size:18px; font-weight:700; color:var(--biru); margin-top:28px; }
+.profile-text{ font-size:14px; line-height:1.6; color:var(--text); margin-top:8px; }
 
 /* ================= FOOTER ================= */
-.footer{
-  margin-top:35px;
-  text-align:center;
-  font-size:13px;
-  color:var(--muted);
-  border-top:1px solid var(--border);
-  padding-top:12px;
-}
+.footer{ margin-top:35px; text-align:center; font-size:13px; color:var(--muted); border-top:1px solid var(--border); padding-top:12px; }
 
 /* ================= LOADING ================= */
 .loading-overlay{
@@ -361,12 +212,7 @@ body{
   pointer-events:none;
   transition:.3s;
 }
-
-.loading-overlay.active{
-  opacity:1;
-  pointer-events:auto;
-}
-
+.loading-overlay.active{ opacity:1; pointer-events:auto; }
 .loader-box{
   background:#fff;
   padding:30px 40px;
@@ -375,7 +221,6 @@ body{
   text-align:center;
   border-top:5px solid var(--emas);
 }
-
 .spinner{
   width:42px;
   height:42px;
@@ -385,16 +230,14 @@ body{
   animation:spin 1s linear infinite;
   margin:auto;
 }
-
 @keyframes spin{to{transform:rotate(360deg);}}
-
 </style>
 </head>
 
 <body>
 
 <!-- LOADING -->
-<div id="loading" class="loading-overlay active">
+<div id="loading" class="loading-overlay">
   <div class="loader-box">
     <div class="spinner"></div>
     <div style="margin-top:12px;font-weight:600;color:#0b3c74">
@@ -418,11 +261,11 @@ body{
     </div>
   </div>
   <div class="header-badge">
-    Sistem Informasi Kepegawaian Dosen Akademik 
+    Sistem Informasi Kepegawaian Dosen Akademik
   </div>
 </div>
 
-<!-- SEARCH -->
+<!-- SEARCH PAGE -->
 <div id="pageSearch" class="page active">
   <div class="card search-box">
     <div class="watermark"></div>
@@ -441,7 +284,7 @@ body{
   </div>
 </div>
 
-<!-- PROFILE -->
+<!-- PROFILE PAGE -->
 <div id="pageProfile" class="page">
   <div class="card">
     <div class="watermark"></div>
@@ -469,17 +312,14 @@ body{
         </table>
       </div>
     </div>
-
     <div class="section-title">Profil Singkat</div>
     <div class="profile-text">
       Muhammad Agil merupakan Dosen Kontrak di Program Studi Manajemen Bisnis dan Sumber Daya Manusia, Fakultas Ekonomi dan Bisnis Universitas Muhammadiyah Semarang. Memiliki latar belakang pendidikan multidisiplin di bidang Manajemen dan Ilmu Lingkungan.
     </div>
-
     <div class="section-title">Tugas Akademik</div>
     <div class="profile-text">
       Berdasarkan penugasan resmi, Muhammad Agil (NIDK: 01261627119) dibebankan pengajaran dengan total 12 SKS, meliputi Mata Kuliah Pengantar Manajemen, Manajemen SDM, Manajemen Pemasaran, Perilaku Organisasi, Etika Bisnis, dan Hukum Bisnis selama periode 2 Maret 2026 – 2 Juni 2026.
     </div>
-
     <div class="btn-row" style="justify-content:space-between;margin-top:30px">
       <button class="btn btn-back" onclick="backSearch()">Kembali</button>
       <button class="btn btn-primary" onclick="openTask()">Lihat Penugasan</button>
@@ -487,7 +327,7 @@ body{
   </div>
 </div>
 
-<!-- TASK -->
+<!-- TASK PAGE -->
 <div id="pageTask" class="page">
   <div class="card">
     <div class="watermark"></div>
@@ -497,12 +337,10 @@ body{
       <div class="status">Penugasan Dosen Kontrak</div>
     </div>
     <div class="divider"></div>
-
     <div class="section-title">Penugasan Pengajaran</div>
     <div class="profile-text">
       Berdasarkan Surat Tugas Fakultas Ekonomi dan Bisnis Universitas Muhammadiyah Semarang, dosen kontrak Muhammad Agil melaksanakan pengajaran periode 2 Maret 2026 – 2 Juni 2026 dengan total 12 SKS.
     </div>
-
     <div class="task-table">
       <table>
         <tr>
@@ -522,35 +360,49 @@ body{
         <tr><td>6</td><td>MNB230</td><td>Hukum Bisnis</td><td>A</td><td>1</td><td>Sabtu</td><td>Mar–Jun</td></tr>
       </table>
     </div>
-
     <div class="sign">
       <div class="sign-item">
         <b>Rektor</b><br>
         Prof. Dr. H. Masrukhi, M.Pd.<br>
-        NIP/NIDN: 196805041993031002
+        NIP 196805041993031002
       </div>
       <div class="line"></div>
       <div class="sign-item">
         <b>Dekan FEB</b><br>
         Dr. H. Sutrisno, S.E., M.Si.<br>
-        NIP/NIDN: 197201152000121001
+        NIP 197201152000121001
       </div>
       <div class="line"></div>
       <div class="sign-item">
         <b>Dosen Terkait</b><br>
         Muhammad Agil, S.M., M.M., M.Ling.<br>
-        NIDK: 01261627119
+        NIDK 01261627119
       </div>
     </div>
-
     <div class="btn-row" style="justify-content:flex-start;margin-top:25px">
       <button class="btn btn-back" onclick="backProfile()">Kembali ke Profil</button>
     </div>
-
     <div class="footer">
       Sistem Informasi Penugasan Dosen Kontrak<br>
-      Biro Administrasi Akademik<br>
       © Universitas Muhammadiyah Semarang 2026
     </div>
   </div>
-</div
+</div>
+
+<script>
+// ===== LOADING =====
+function showLoading(show=true){
+  document.getElementById("loading").classList.toggle("active", show);
+}
+
+// ===== SEARCH FUNCTION =====
+function search(){
+  const keyword = document.getElementById("keyword").value.trim().toLowerCase();
+  if(!keyword) return alert("Masukkan Nama atau NIDN/NIDK!");
+
+  showLoading(true);
+
+  setTimeout(()=>{
+    if(keyword.includes("agil") || keyword.includes("01261627119")){
+      showLoading(false);
+      document.getElementById("pageSearch").classList.remove
