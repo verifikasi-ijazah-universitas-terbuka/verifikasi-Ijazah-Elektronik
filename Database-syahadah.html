@@ -3,391 +3,733 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sistem Verifikasi Syahadah Elektronik Nasional - Lembaga Sertifikasi Profesional Indonesia">
-    <title>Verifikasi Syahadah Elektronik | Sistem Nasional</title>
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
+    <title>Sistem Verifikasi Syahadah Nasional - Kementerian Agama RI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- QR Code Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    
-    <!-- Confetti for success effect -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        primary: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            800: '#1e40af',
-                            900: '#1e3a8a',
-                        },
-                        gold: {
-                            400: '#fbbf24',
-                            500: '#f59e0b',
-                            600: '#d97706',
-                        }
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out',
-                        'slide-up': 'slideUp 0.6s ease-out',
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'shimmer': 'shimmer 2s linear infinite',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(30px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
-                        },
-                        shimmer: {
-                            '0%': { backgroundPosition: '-1000px 0' },
-                            '100%': { backgroundPosition: '1000px 0' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-
-        /* Glassmorphism */
-        .glass {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .glass-dark {
-            background: rgba(30, 58, 138, 0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        /* Holographic Effect */
-        .hologram {
-            background: linear-gradient(
-                135deg,
-                rgba(255,255,255,0.1) 0%,
-                rgba(255,255,255,0.05) 50%,
-                rgba(255,255,255,0.1) 100%
-            );
-            background-size: 200% 200%;
-            animation: hologramMove 3s ease infinite;
+        /* CSS Variables */
+        :root {
+            --primary: #1e3a8a;
+            --primary-dark: #1e40af;
+            --primary-light: #3b82f6;
+            --secondary: #b45309;
+            --gold: #d4af37;
+            --gold-light: #f4e4a6;
+            --gold-dark: #b8941f;
+            --success: #059669;
+            --success-light: #d1fae5;
+            --error: #dc2626;
+            --error-light: #fee2e2;
+            --warning: #d97706;
+            --bg: #f8fafc;
+            --bg-dark: #f1f5f9;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
-        @keyframes hologramMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* Security Pattern Background */
-        .security-bg {
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 50%, #f0f4ff 100%);
+            min-height: 100vh;
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Background Elements */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: 
-                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 50%),
-                linear-gradient(to bottom, #f8fafc, #f1f5f9);
+                radial-gradient(circle at 20% 50%, rgba(30, 58, 138, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(30, 58, 138, 0.02) 0%, transparent 30%);
+            pointer-events: none;
+            z-index: -1;
         }
 
-        /* Loading Animation */
-        .loader {
-            border: 3px solid #f3f3f3;
+        .official-watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            font-weight: 700;
+            color: rgba(30, 58, 138, 0.02);
+            pointer-events: none;
+            z-index: -1;
+            white-space: nowrap;
+            letter-spacing: 0.5rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 3px solid var(--gold);
+            padding: 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .nav-brand:hover {
+            transform: scale(1.02);
+        }
+
+        .logo-seal {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border-radius: 50%;
-            border-top: 3px solid #2563eb;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Input Focus Animation */
-        .input-group:focus-within label {
-            transform: translateY(-24px) scale(0.85);
-            color: #2563eb;
-        }
-
-        .input-group label {
-            transition: all 0.3s ease;
-        }
-
-        /* Card Hover Effect */
-        .cert-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .cert-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Digital Signature Animation */
-        .signature-line {
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            animation: sign 2s ease-in-out forwards;
-        }
-
-        @keyframes sign {
-            to { stroke-dashoffset: 0; }
-        }
-
-        /* Page Transition */
-        .page {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.4s ease-in-out;
-        }
-        .page.active {
-            display: block;
-            opacity: 1;
-        }
-
-        /* Gradient Text */
-        .text-gradient {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #f59e0b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Security Seal */
-        .seal {
-            position: relative;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.5);
+            color: white;
+            font-size: 1.5rem;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            animation: sealPulse 3s infinite;
         }
-        .seal::before {
+
+        @keyframes sealPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+            background: rgba(30, 58, 138, 0.05);
+        }
+
+        .nav-link.active::after {
             content: '';
             position: absolute;
-            inset: 5px;
-            border-radius: 50%;
-            border: 2px dashed rgba(255,255,255,0.5);
+            bottom: -0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 2px;
         }
-        .seal::after {
+
+        .nav-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(5, 150, 105, 0.1);
+            color: var(--success);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid rgba(5, 150, 105, 0.2);
+            margin-left: 1rem;
+        }
+
+        .nav-status::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem 2rem;
+            min-height: calc(100vh - 300px);
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .page-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Overlay */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            backdrop-filter: blur(10px);
+        }
+
+        .page-loader.active {
+            display: flex;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-seal {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+        }
+
+        .loader-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: var(--gold);
+            border-right-color: var(--primary);
+        }
+
+        .loader-ring.outer {
+            width: 120px;
+            height: 120px;
+            top: 0;
+            left: 0;
+            animation: rotate 2s linear infinite;
+        }
+
+        .loader-ring.middle {
+            width: 90px;
+            height: 90px;
+            top: 15px;
+            left: 15px;
+            animation: rotate 1.5s linear infinite reverse;
+        }
+
+        .loader-ring.inner {
+            width: 60px;
+            height: 60px;
+            top: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            border: none;
+            animation: pulse-scale 2s ease-in-out infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-scale {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .loader-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .loader-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .loader-progress {
+            width: 200px;
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            margin: 1.5rem auto 0;
+            overflow: hidden;
+        }
+
+        .loader-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--gold));
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* ========== BERANDA PAGE ========== */
+        .hero-section {
+            text-align: center;
+            padding: 3rem 0 4rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 9999px;
+            color: var(--gold-dark);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: white;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Stats Dashboard */
+        .stats-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
             content: '';
             position: absolute;
-            inset: 12px;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--gold));
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-icon.blue {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary-light);
+        }
+
+        .stat-icon.gold {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-dark);
+        }
+
+        .stat-icon.green {
+            background: rgba(5, 150, 105, 0.1);
+            color: var(--success);
+        }
+
+        .stat-icon.purple {
+            background: rgba(139, 92, 246, 0.1);
+            color: #8b5cf6;
+        }
+
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .stat-change {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        .stat-change.positive {
+            color: var(--success);
+        }
+
+        /* Features Grid */
+        .features-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--gold);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 20px;
+            border: 2px solid var(--gold);
+            opacity: 0.3;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-desc {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.3s;
+        }
+
+        .feature-link:hover {
+            gap: 0.75rem;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            margin-bottom: 4rem;
+        }
+
+        .quick-actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .quick-action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem 1.5rem;
+            background: var(--bg);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .quick-action-btn:hover {
+            background: white;
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .quick-action-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
             border-radius: 50%;
-            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
         }
 
-        /* Verified Badge Pulse */
-        .verified-badge {
-            animation: verifiedPulse 2s infinite;
+        .quick-action-text {
+            font-weight: 600;
+            text-align: center;
         }
-        @keyframes verifiedPulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
-            50% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+
+        /* News/Updates Section */
+        .updates-section {
+            margin-bottom: 4rem;
         }
-    </style>
-</head>
-<body class="security-bg min-h-screen font-sans text-slate-800 overflow-x-hidden">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass border-b border-slate-200 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center space-x-4 cursor-pointer" onclick="router.navigate('home')">
-                    <div class="w-12 h-12 bg-gradient-to-br from-primary-600 to-primary-800 rounded-xl flex items-center justify-center shadow-lg">
-                        <i class="fas fa-certificate text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h1 class="font-bold text-xl text-slate-900 leading-tight">SYAHADAH<span class="text-primary-600">ELECTRONIC</span></h1>
-                        <p class="text-xs text-slate-500 font-medium tracking-wider">SISTEM VERIFIKASI NASIONAL</p>
-                    </div>
-                </div>
-                
-                <div class="hidden md:flex items-center space-x-8">
-                    <button onclick="router.navigate('home')" class="nav-link text-slate-600 hover:text-primary-600 font-medium transition-colors">Beranda</button>
-                    <button onclick="router.navigate('verify')" class="nav-link text-slate-600 hover:text-primary-600 font-medium transition-colors">Verifikasi</button>
-                    <button onclick="router.navigate('about')" class="nav-link text-slate-600 hover:text-primary-600 font-medium transition-colors">Tentang</button>
-                    <div class="flex items-center space-x-2 px-4 py-2 bg-green-50 rounded-full border border-green-200">
-                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        <span class="text-sm font-medium text-green-700">Sistem Aktif</span>
-                    </div>
-                </div>
+        .updates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
 
-                <button class="md:hidden text-slate-600 hover:text-primary-600" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden glass border-t border-slate-200">
-            <div class="px-4 pt-2 pb-4 space-y-2">
-                <button onclick="router.navigate('home')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-primary-50 rounded-lg">Beranda</button>
-                <button onclick="router.navigate('verify')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-primary-50 rounded-lg">Verifikasi</button>
-                <button onclick="router.navigate('about')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-primary-50 rounded-lg">Tentang</button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content Container -->
-    <main class="pt-20 min-h-screen">
-        
-        <!-- PAGE: HOME -->
-        <section id="page-home" class="page active">
-            <!-- Hero Section -->
-            <div class="relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-br from-primary-900 via-primary-800 to-slate-900"></div>
-                <div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-                
-                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-                    <div class="grid lg:grid-cols-2 gap-12 items-center">
-                        <div class="animate-slide-up">
-                            <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium mb-6">
-                                <i class="fas fa-shield-alt mr-2 text-gold-400"></i>
-                                Terintegrasi dengan Dukcapil & Kemenag
-                            </div>
-                            <h1 class="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                                Verifikasi Syahadah<br>
-                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-yellow-200">Elektronik Nasional</span>
-                            </h1>
-                            <p class="text-lg text-slate-300 mb-8 leading-relaxed max-w-xl">
-                                Sistem validasi dokumen keislaman terpadu dengan teknologi blockchain dan tanda tangan digital. 
-                                Keamanan terjamin, valid selamanya.
-                            </p>
-                            <div class="flex flex-col sm:flex-row gap-4">
-                                <button onclick="router.navigate('verify')" class="group px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center">
-                                    <span>Verifikasi Sekarang</span>
-                                    <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                                </button>
-                                <button onclick="showModal('info')" class="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300">
-                                    Pelajari Sistem
-                                </button>
-                            </div>
-                            
-                            <div class="mt-12 flex items-center space-x-8 text-white/80">
-                                <div class="flex items-center">
-                                    <i class="fas fa-check-circle text-green-400 mr-2"></i>
-                                    <span class="text-sm">Terverifikasi Dukcapil</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <i class="fas fa-lock text-gold-400 mr-2"></i>
-                                    <span class="text-sm">Enkripsi AES-256</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <i class="fas fa-qrcode text-blue-400 mr-2"></i>
-                                    <span class="text-sm">QR Code Validasi</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="relative hidden lg:block">
-                            <div class="absolute inset-0 bg-gradient-to-r from-primary-500 to-gold-500 rounded-3xl transform rotate-3 opacity-20 blur-2xl"></div>
-                            <div class="relative glass rounded-3xl p-8 shadow-2xl border border-white/20 animate-fade-in">
-                                <div class="flex items-center justify-between mb-6">
-                                    <div class="flex items-center space-x-3">
-                                        <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center">
-                                            <i class="fas fa-mosque text-primary-600"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm font-semibold text-slate-900">Sertifikat Digital</p>
-                                            <p class="text-xs text-slate-500">ID: SYH-2024-*****</p>
-                                        </div>
-                                    </div>
-                                    <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">VALID</span>
-                                </div>
-                                <div class="space-y-4">
-                                    <div class="h-2 bg-slate-200 rounded-full w-3/4"></div>
-                                    <div class="h-2 bg-slate-200 rounded-full w-1/2"></div>
-                                    <div class="h-2 bg-slate-200 rounded-full w-5/6"></div>
-                                </div>
-                                <div class="mt-6 pt-6 border-t border-slate-200 flex justify-between items-center">
-                                    <div class="flex -space-x-2">
-                                        <div class="w-8 h-8 rounded-full bg-primary-500 border-2 border-white"></div>
-                                        <div class="w-8 h-8 rounded-full bg-gold-500 border-2 border-white"></div>
-                                        <div class="w-8 h-8 rounded-full bg-green-500 border-2 border-white"></div>
-                                    </div>
-                                    <div class="text-right">
-                                        <p class="text-xs text-slate-500">Diterbitkan</p>
-                                        <p class="text-sm font-semibold text-slate-900">15 Januari 2024</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Statistics Section -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 relative z-10">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="glass rounded-2xl p-6 shadow-lg border border-white/50 text-center transform hover:-translate-y-1 transition-transform">
-                        <div class="text-3xl font-bold text-primary-600 mb-1 counter" data-target="50000">0</div>
-                        <div class="text-sm text-slate-600">Syahadah Terbit</div>
-                    </div>
-                    <div class="glass rounded-2xl p-6 shadow-lg border border-white/50 text-center transform hover:-translate-y-1 transition-transform">
-                        <div class="text-3xl font-bold text-gold-600 mb-1 counter" data-target="1000">0</div>
-                        <div class="text-sm text-slate-600">Lembaga Mitra</div>
-                    </div>
-                    <div class="glass rounded-2xl p-6 shadow-lg border border-white/50 text-center transform hover:-translate-y-1 transition-transform">
-                        <div class="text-3xl font-bold text-green-600 mb-1 counter" data-target="99">0</div>
-                        <div class="text-sm text-slate-600">% Akurasi Data</div>
-                    </div>
-                    <div class="glass rounded-2xl p-6 shadow-lg border border-white/50 text-center transform hover:-translate-y-1 transition-transform">
-                        <div class="text-3xl font-bold text-purple-600 mb-1 counter" data-target="24">0</div>
-                        <div class="text-sm text-slate-600">Jam Layanan</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Features Section -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl font-bold text-slate-900 mb-4">Fitur Sistem Verifikasi</h2>
-                    <p class="text-slate-600 max-w-2xl mx-auto">Teknologi modern untuk memastikan keaslian dokumen syahadah dengan standar keamanan nasional</p>
-                </div>
-                
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="cert-card bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
-                        <div class="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-6">
-                            <i class="fas fa-fingerprint text-2xl text-primary-600"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">Biometrik Tertanam</h3>
-                        <p class="text-slate-600 leading-relaxed">Verifikasi sidik jari dan face recognition terintegrasi dengan database Dukcapil un
+        .update-card {
+            background
