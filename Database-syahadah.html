@@ -3,164 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Verifikasi Syahadah Nasional</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <meta name="description" content="Sistem Verifikasi Syahadah Elektronik Nasional - Lembaga Sertifikasi Profesional Indonesia">
+    <title>Verifikasi Syahadah Elektronik | Sistem Nasional</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <!-- Confetti for success effect -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-1000px 0' },
+                            '100%': { backgroundPosition: '1000px 0' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
 
-        :root {
-            --primary: #1e3a8a;
-            --primary-dark: #1e40af;
-            --secondary: #3b82f6;
-            --accent: #f59e0b;
-            --success: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-            --light: #f8fafc;
-            --dark: #1e293b;
-            --shadow: 0 10px 25px rgba(0,0,0,0.1);
-            --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
+        .glass-dark {
+            background: rgba(30, 58, 138, 0.95);
+            backdrop-filter: blur(10px);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        /* Holographic Effect */
+        .hologram {
+            background: linear-gradient(
+                135deg,
+                rgba(255,255,255,0.1) 0%,
+                rgba(255,255,255,0.05) 50%,
+                rgba(255,255,255,0.1) 100%
+            );
+            background-size: 200% 200%;
+            animation: hologramMove 3s ease infinite;
         }
 
-        /* Header Nasional */
-        .header {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            margin-bottom: 40px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid rgba(255,255,255,0.2);
+        @keyframes hologramMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .logo {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+        /* Security Pattern Background */
+        .security-bg {
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 50%),
+                linear-gradient(to bottom, #f8fafc, #f1f5f9);
         }
 
-        .tagline {
-            color: var(--dark);
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        /* Form Pencarian */
-        .search-container {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 40px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid rgba(255,255,255,0.2);
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        .search-input-group {
-            position: relative;
-            margin-bottom: 25px;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 18px 20px 18px 50px;
-            border: 2px solid #e2e8f0;
-            border-radius: 15px;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            background: rgba(255,255,255,0.8);
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(30,58,138,0.1);
-            transform: translateY(-2px);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        .btn {
-            padding: 16px 40px;
-            border: none;
-            border-radius: 15px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
-            color: white;
-            box-shadow: var(--shadow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-success {
-            background: linear-gradient(45deg, var(--success), #059669);
-            color: white;
-        }
-
-        .btn-danger {
-            background: linear-gradient(45deg, var(--danger), #dc2626);
-            color: white;
-        }
-
-        /* Loading */
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 40px;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid #f3f4f6;
-            border-top: 4px solid var(--primary);
+        /* Loading Animation */
+        .loader {
+            border: 3px solid #f3f3f3;
             border-radius: 50%;
+            border-top: 3px solid #2563eb;
+            width: 40px;
+            height: 40px;
             animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
         }
 
         @keyframes spin {
@@ -168,377 +139,255 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Halaman Hasil */
-        .result-page {
-            display: none;
-            animation: fadeInUp 0.6s ease;
+        /* Input Focus Animation */
+        .input-group:focus-within label {
+            transform: translateY(-24px) scale(0.85);
+            color: #2563eb;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .identity-card {
-            background: linear-gradient(135deg, white 0%, #f8fafc 100%);
-            border-radius: 25px;
-            padding: 40px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid rgba(255,255,255,0.3);
-            backdrop-filter: blur(20px);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .card-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .status-valid { background: rgba(16,185,129,0.1); color: var(--success); border: 2px solid var(--success); }
-        .status-invalid { background: rgba(239,68,68,0.1); color: var(--danger); border: 2px solid var(--danger); }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .info-item {
-            background: rgba(255,255,255,0.7);
-            padding: 20px;
-            border-radius: 15px;
-            border-left: 4px solid var(--primary);
-        }
-
-        .info-label {
-            font-weight: 600;
-            color: var(--primary);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
-
-        .info-value {
-            font-size: 1.1rem;
-            color: var(--dark);
-            font-weight: 500;
-        }
-
-        .signature {
-            border-top: 2px dashed #e2e8f0;
-            padding-top: 30px;
-            text-align: center;
-            color: #6b7280;
-        }
-
-        .back-btn {
-            display: block;
-            margin: 40px auto 0;
-            max-width: 250px;
-        }
-
-        /* Not Found */
-        .not-found {
-            text-align: center;
-            padding: 60px 20px;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            box-shadow: var(--shadow-lg);
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container { padding: 15px; }
-            .search-container, .identity-card { padding: 25px; }
-            .info-grid { grid-template-columns: 1fr; }
-            .logo { font-size: 2rem; }
-        }
-
-        /* Keywords Elegan */
-        .keywords {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .keyword-tag {
-            padding: 8px 16px;
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
-            color: white;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
+        .input-group label {
             transition: all 0.3s ease;
         }
 
-        .keyword-tag:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow);
+        /* Card Hover Effect */
+        .cert-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Digital Signature Animation */
+        .signature-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: sign 2s ease-in-out forwards;
+        }
+
+        @keyframes sign {
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* Page Transition */
+        .page {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+        .page.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Security Seal */
+        .seal {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.5);
+        }
+        .seal::before {
+            content: '';
+            position: absolute;
+            inset: 5px;
+            border-radius: 50%;
+            border: 2px dashed rgba(255,255,255,0.5);
+        }
+        .seal::after {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Verified Badge Pulse */
+        .verified-badge {
+            animation: verifiedPulse 2s infinite;
+        }
+        @keyframes verifiedPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="logo">
-                <i class="fas fa-mosque"></i> SYAHADAH NASIONAL
-            </div>
-            <div class="tagline">
-                Sistem Verifikasi Digital Sertifikat Syahadah - Kementerian Agama RI
-            </div>
-        </div>
+<body class="security-bg min-h-screen font-sans text-slate-800 overflow-x-hidden">
 
-        <!-- Halaman Pencarian -->
-        <div id="searchPage">
-            <div class="search-container">
-                <h2 style="text-align: center; margin-bottom: 30px; color: var(--dark);">
-                    <i class="fas fa-search"></i> Verifikasi Syahadah
-                </h2>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass border-b border-slate-200 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-4 cursor-pointer" onclick="router.navigate('home')">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary-600 to-primary-800 rounded-xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-certificate text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-xl text-slate-900 leading-tight">SYAHADAH<span class="text-primary-600">ELECTRONIC</span></h1>
+                        <p class="text-xs text-slate-500 font-medium tracking-wider">SISTEM VERIFIKASI NASIONAL</p>
+                    </div>
+                </div>
                 
-                <div class="search-input-group">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" class="search-input" id="searchInput" 
-                           placeholder="Masukkan Nomor Syahadah / Nama Lengkap / Nomor Registrasi"
-                           autocomplete="off">
+                <div class="hidden md:flex items-center space-x-8">
+                    <button onclick="router.navigate('home')" class="nav-link text-slate-600 hover:text-primary-600 font-medium transition-colors">Beranda</button>
+                    <button onclick="router.navigate('verify')" class="nav-link text-slate-600 hover:text-primary-600 font-medium transition-colors">Verifikasi</button>
+                    <button onclick="router.navigate('about')" class="nav-link text-slate-600 hover:text-primary-600 font-medium transition-colors">Tentang</button>
+                    <div class="flex items-center space-x-2 px-4 py-2 bg-green-50 rounded-full border border-green-200">
+                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span class="text-sm font-medium text-green-700">Sistem Aktif</span>
+                    </div>
                 </div>
 
-                <div class="keywords">
-                    <div class="keyword-tag" onclick="setKeyword('SHD2026001')">SHD2026001</div>
-                    <div class="keyword-tag" onclick="setKeyword('SHD2026002')">SHD2026002</div>
-                    <div class="keyword-tag" onclick="setKeyword('MUHAMMAD ALI')">MUHAMMAD ALI</div>
-                    <div class="keyword-tag" onclick="setKeyword('REG-NSY-001')">REG-NSY-001</div>
-                    <div class="keyword-tag" onclick="setKeyword('AHMAD SYAHADAH')">AHMAD SYAHADAH</div>
-                </div>
-
-                <button class="btn btn-primary" style="width: 100%; margin-top: 25px;" onclick="verifySyahadah()">
-                    <i class="fas fa-check-circle"></i>
-                    Verifikasi Data Syahadah
+                <button class="md:hidden text-slate-600 hover:text-primary-600" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
         </div>
-
-        <!-- Loading -->
-        <div id="loading" class="loading">
-            <div class="spinner"></div>
-            <h3>Memverifikasi data...</h3>
-            <p>Mohon tunggu, sistem sedang memproses permintaan Anda</p>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-slate-200">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <button onclick="router.navigate('home')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-primary-50 rounded-lg">Beranda</button>
+                <button onclick="router.navigate('verify')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-primary-50 rounded-lg">Verifikasi</button>
+                <button onclick="router.navigate('about')" class="block w-full text-left px-3 py-2 text-slate-600 hover:bg-primary-50 rounded-lg">Tentang</button>
+            </div>
         </div>
+    </nav>
 
-        <!-- Hasil Ditemukan -->
-        <div id="resultPage" class="result-page">
-            <div class="identity-card">
-                <div class="card-header">
-                    <h2><i class="fas fa-certificate"></i> Sertifikat Syahadah</h2>
-                    <div id="statusBadge" class="status-badge status-valid">
-                        <i class="fas fa-check-circle"></i> TERDAFTAR &amp; VALID
+    <!-- Main Content Container -->
+    <main class="pt-20 min-h-screen">
+        
+        <!-- PAGE: HOME -->
+        <section id="page-home" class="page active">
+            <!-- Hero Section -->
+            <div class="relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-900 via-primary-800 to-slate-900"></div>
+                <div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+                
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="animate-slide-up">
+                            <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium mb-6">
+                                <i class="fas fa-shield-alt mr-2 text-gold-400"></i>
+                                Terintegrasi dengan Dukcapil & Kemenag
+                            </div>
+                            <h1 class="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                                Verifikasi Syahadah<br>
+                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-yellow-200">Elektronik Nasional</span>
+                            </h1>
+                            <p class="text-lg text-slate-300 mb-8 leading-relaxed max-w-xl">
+                                Sistem validasi dokumen keislaman terpadu dengan teknologi blockchain dan tanda tangan digital. 
+                                Keamanan terjamin, valid selamanya.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <button onclick="router.navigate('verify')" class="group px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center">
+                                    <span>Verifikasi Sekarang</span>
+                                    <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                </button>
+                                <button onclick="showModal('info')" class="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300">
+                                    Pelajari Sistem
+                                </button>
+                            </div>
+                            
+                            <div class="mt-12 flex items-center space-x-8 text-white/80">
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                                    <span class="text-sm">Terverifikasi Dukcapil</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-lock text-gold-400 mr-2"></i>
+                                    <span class="text-sm">Enkripsi AES-256</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-qrcode text-blue-400 mr-2"></i>
+                                    <span class="text-sm">QR Code Validasi</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative hidden lg:block">
+                            <div class="absolute inset-0 bg-gradient-to-r from-primary-500 to-gold-500 rounded-3xl transform rotate-3 opacity-20 blur-2xl"></div>
+                            <div class="relative glass rounded-3xl p-8 shadow-2xl border border-white/20 animate-fade-in">
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center">
+                                            <i class="fas fa-mosque text-primary-600"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-semibold text-slate-900">Sertifikat Digital</p>
+                                            <p class="text-xs text-slate-500">ID: SYH-2024-*****</p>
+                                        </div>
+                                    </div>
+                                    <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">VALID</span>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="h-2 bg-slate-200 rounded-full w-3/4"></div>
+                                    <div class="h-2 bg-slate-200 rounded-full w-1/2"></div>
+                                    <div class="h-2 bg-slate-200 rounded-full w-5/6"></div>
+                                </div>
+                                <div class="mt-6 pt-6 border-t border-slate-200 flex justify-between items-center">
+                                    <div class="flex -space-x-2">
+                                        <div class="w-8 h-8 rounded-full bg-primary-500 border-2 border-white"></div>
+                                        <div class="w-8 h-8 rounded-full bg-gold-500 border-2 border-white"></div>
+                                        <div class="w-8 h-8 rounded-full bg-green-500 border-2 border-white"></div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-xs text-slate-500">Diterbitkan</p>
+                                        <p class="text-sm font-semibold text-slate-900">15 Januari 2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="info-grid">
-                    <div class="info-item">
-                        <div class="info-label">Nomor Syahadah</div>
-                        <div id="noSyahadah" class="info-value">-</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Nomor Registrasi</div>
-                        <div id="noRegistrasi" class="info-value">-</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Nama Lengkap</div>
-                        <div id="namaLengkap" class="info-value">-</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Tempat, Tanggal Lahir</div>
-                        <div id="ttl" class="info-value">-</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Alamat Lengkap</div>
-                        <div id="alamat" class="info-value">-</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Kategori Syahadah</div>
-                        <div id="kategori" class="info-value">-</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Penguji</div>
-                        <div id="penguji" class="info-value">-</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Diterbitkan</div>
-                        <div id="diterbitkan" class="info-value">-</div>
-                    </div>
-                </div>
-
-                <div class="signature">
-                    <div style="font-size: 0.9rem; margin-bottom: 10px;">
-                        Disahkan Secara Elektronik oleh Kementerian Agama RI
-                    </div>
-                    <div style="font-weight: 600; color: var(--primary);">Direktur Pendidikan Islam</div>
-                    <div>Dr. H. Muhammad Syarif, M.Ag</div>
-                    <div style="font-size: 0.8rem; margin-top: 15px;">Tanda Tangan Digital - Berlaku Nasional</div>
                 </div>
             </div>
-            
-            <a href="#" class="btn btn-primary back-btn" onclick="goBack()">
-                <i class="fas fa-arrow-left"></i> Verifikasi Data Lain
-            </a>
-        </div>
 
-        <!-- Data Tidak Ditemukan -->
-        <div id="notFoundPage" class="not-found" style="display: none;">
-            <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: var(--warning); margin-bottom: 20px;"></i>
-            <h2 style="color: var(--dark); margin-bottom: 15px;">Data Tidak Ditemukan</h2>
-            <p style="color: #6b7280; font-size: 1.1rem; margin-bottom: 30px;">
-                Nomor Syahadah atau data yang Anda masukkan tidak terdaftar dalam sistem nasional.
-            </p>
-            <a href="#" class="btn btn-primary" onclick="goBack()">
-                <i class="fas fa-search"></i> Coba Verifikasi Lagi
-            </a>
-        </div>
-    </div>
+            <!-- Statistics Section -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 relative z-10">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="glass rounded-2xl p-6 shadow-lg border border-white/50 text-center transform hover:-translate-y-1 transition-transform">
+                        <div class="text-3xl font-bold text-primary-600 mb-1 counter" data-target="50000">0</div>
+                        <div class="text-sm text-slate-600">Syahadah Terbit</div>
+                    </div>
+                    <div class="glass rounded-2xl p-6 shadow-lg border border-white/50 text-center transform hover:-translate-y-1 transition-transform">
+                        <div class="text-3xl font-bold text-gold-600 mb-1 counter" data-target="1000">0</div>
+                        <div class="text-sm text-slate-600">Lembaga Mitra</div>
+                    </div>
+                    <div class="glass rounded-2xl p-6 shadow-lg border border-white/50 text-center transform hover:-translate-y-1 transition-transform">
+                        <div class="text-3xl font-bold text-green-600 mb-1 counter" data-target="99">0</div>
+                        <div class="text-sm text-slate-600">% Akurasi Data</div>
+                    </div>
+                    <div class="glass rounded-2xl p-6 shadow-lg border border-white/50 text-center transform hover:-translate-y-1 transition-transform">
+                        <div class="text-3xl font-bold text-purple-600 mb-1 counter" data-target="24">0</div>
+                        <div class="text-sm text-slate-600">Jam Layanan</div>
+                    </div>
+                </div>
+            </div>
 
-    <script>
-        // Database Simulasi Nasional (100+ data)
-        const databaseSyahadah = [
-            {
-                noSyahadah: "SHD2026001",
-                noRegistrasi: "REG-NSY-001",
-                namaLengkap: "Muhammad Ali Bin Abdullah",
-                ttl: "Jakarta, 15 Maret 1995",
-                alamat: "Jl. Merdeka No. 45, RT 03/07, Kel. Tanah Abang, Jakarta Pusat",
-                kategori: "Syahadah Dasar (Shahadatul Ichlas)",
-                penguji: "Dr. H. Ahmad Fauzi, M.Ag",
-                diterbitkan: "Masjid Istiqlal, Jakarta | 12 Januari 2026"
-            },
-            {
-                noSyahadah: "SHD2026002",
-                noRegistrasi: "REG-NSY-002",
-                namaLengkap: "Siti Nurhaliza Binti Ismail",
-                ttl: "Semarang, 22 Juli 1988",
-                alamat: "Jl. Pandanaran No. 123, Banyumanik, Semarang, Jawa Tengah",
-                kategori: "Syahadah Penguatan (Shahadatul Ichlas + Syariah)",
-                penguji: "KH. Muhammad Yusuf, M.Ag",
-                diterbitkan: "Masjid Agung Jawa Tengah | 25 Januari 2026"
-            },
-            {
-                noSyahadah: "SHD2026003",
-                noRegistrasi: "REG-NSY-003",
-                namaLengkap: "Ahmad Rizky Pratama",
-                ttl: "Surabaya, 10 November 2000",
-                alamat: "Jl. Raya Darmo 78, Wonokromo, Surabaya, Jawa Timur",
-                kategori: "Syahadah Dasar",
-                penguji: "Dr. H. Abdullah Nasution, Ph.D",
-                diterbitkan: "Masjid Nasional Al-Akbar, Surabaya | 5 Februari 2026"
-            }
-        ];
-
-        function setKeyword(keyword) {
-            document.getElementById('searchInput').value = keyword;
-            document.getElementById('searchInput').focus();
-        }
-
-        function showLoading() {
-            document.getElementById('searchPage').style.display = 'none';
-            document.getElementById('loading').style.display = 'block';
-        }
-
-        function hideLoading() {
-            document.getElementById('loading').style.display = 'none';
-        }
-
-        function verifySyahadah() {
-            const query = document.getElementById('searchInput').value.trim().toUpperCase();
-            
-            if (!query) {
-                alert('Mohon masukkan nomor syahadah atau nama lengkap');
-                return;
-            }
-
-            showLoading();
-
-            // Simulasi delay network (1-2 detik)
-            setTimeout(() => {
-                const result = databaseSyahadah.find(item => 
-                    item.noSyahadah.includes(query) || 
-                    item.noRegistrasi.includes(query) ||
-                    item.namaLengkap.toUpperCase().includes(query)
-                );
-
-                hideLoading();
-
-                if (result) {
-                    // Data ditemukan
-                    document.getElementById('noSyahadah').textContent = result.noSyahadah;
-                    document.getElementById('noRegistrasi').textContent = result.noRegistrasi;
-                    document.getElementById('namaLengkap').textContent = result.namaLengkap;
-                    document.getElementById('ttl').textContent = result.ttl;
-                    document.getElementById('alamat').textContent = result.alamat;
-                    document.getElementById('kategori').textContent = result.kategori;
-                    document.getElementById('penguji').textContent = result.penguji;
-                    document.getElementById('diterbitkan').textContent = result.diterbitkan;
-
-                    document.getElementById('searchPage').style.display = 'none';
-                    document.getElementById('resultPage').style.display = 'block';
-                    document.getElementById('notFoundPage').style.display = 'none';
-                } else {
-                    // Data tidak ditemukan
-                    document.getElementById('searchPage').style.display = 'none';
-                    document.getElementById('resultPage').style.display = 'none';
-                    document.getElementById('notFoundPage').style.display = 'block';
-                }
-
-                // Scroll ke atas halaman hasil
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 1500 + Math.random() * 500);
-        }
-
-        function goBack() {
-            document.getElementById('searchPage').style.display = 'block';
-            document.getElementById('resultPage').style.display = 'none';
-            document.getElementById('notFoundPage').style.display = 'none';
-            document.getElementById('searchInput').value = '';
-            document.getElementById('searchInput').focus();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Enter key support
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                verifySyahadah();
-            }
-        });
-
-        // PWA Ready - Service Worker (opsional)
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js');
-            });
-        }
-    </script>
-</body>
-</html>
+            <!-- Features Section -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4">Fitur Sistem Verifikasi</h2>
+                    <p class="text-slate-600 max-w-2xl mx-auto">Teknologi modern untuk memastikan keaslian dokumen syahadah dengan standar keamanan nasional</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="cert-card bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
+                        <div class="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-fingerprint text-2xl text-primary-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Biometrik Tertanam</h3>
+                        <p class="text-slate-600 leading-relaxed">Verifikasi sidik jari dan face recognition terintegrasi dengan database Dukcapil un
